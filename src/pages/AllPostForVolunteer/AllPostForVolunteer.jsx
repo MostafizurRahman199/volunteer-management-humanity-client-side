@@ -42,9 +42,7 @@ const AllPostForVolunteer = () => {
 
   return (
     <div
-      className={`p-6 max-w-6xl mx-auto bg-${
-        darkMode ? "gray-800 text-white" : "white"
-      }`}
+      className={`p-6 max-w-6xl mx-auto `}
     >
       <h2 className="text-2xl font-semibold mb-6">Volunteer Need Posts</h2>
 
@@ -54,14 +52,14 @@ const AllPostForVolunteer = () => {
         <input
           type="text"
           placeholder="Search by title or location..."
-          className="input input-bordered w-full md:w-1/3"
+          className="input input-bordered w-full md:w-1/3 text-black"
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
 
         {/* Filter by Category */}
         <select
-          className="select select-bordered w-full md:w-1/4"
+          className="select select-bordered w-full md:w-1/4 text-black"
           value={selectedCategory}
           onChange={(e) => setSelectedCategory(e.target.value)}
         >
@@ -74,7 +72,7 @@ const AllPostForVolunteer = () => {
 
         {/* Sort by Deadline */}
         <select
-          className="select select-bordered w-full md:w-1/4"
+          className="select select-bordered w-full md:w-1/4 text-black"
           value={sortOrder}
           onChange={(e) => setSortOrder(e.target.value)}
         >
@@ -88,7 +86,7 @@ const AllPostForVolunteer = () => {
         {filteredPosts?.map((post) => (
           <div
             key={post._id}
-            className="card bg-base-100 shadow-md rounded-lg p-4 border border-gray-200"
+            className={`card  shadow-md rounded-2xl p-4 border border-gray-200 ${darkMode ? "text-white bg-[#1A1A1D]" : "text-gray-800 bg-white"}`}
           >
             {/* Thumbnail */}
             <img
@@ -112,7 +110,7 @@ const AllPostForVolunteer = () => {
 
             {/* View Details Button */}
             <button
-              className="btn btn-primary w-full"
+              className="btn bg-[#41B3A2] hover:bg-[#0D7C66] text-white w-full"
               onClick={() => navigate(`/volunteer-post-details/${post._id}`)}
             >
               View Details

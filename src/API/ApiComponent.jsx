@@ -20,7 +20,7 @@ const ApiComponent = () => {
     api.interceptors.response.use(
      
       (response) => {
-        console.log(response);
+        // console.log(response);
         return response;
       },
 
@@ -70,97 +70,29 @@ const ApiComponent = () => {
 
 
   // Helper function to handle errors
+  // const handleError = (error) => {
+  //   console.error("API Error:", error.message);
+  //   throw error; // Rethrow the error for the caller to handle
+  // };
+
   const handleError = (error) => {
-    console.error("API Error:", error.message);
-    throw error; // Rethrow the error for the caller to handle
-  };
-
-
-
-  // Fetch all jobs
-  const fetchJobs = async () => {
-    try {
-      const response = await api.get("/jobs");
-      return handleResponse(response);
-    } catch (error) {
-      handleError(error);
+    if (error.response) {
+      // Server responded with a status code out of 2xx range
+      console.error("API Error:", error.response.data?.message || error.response.statusText);
+      throw new Error(error.response.data?.message || `HTTP Error: ${error.response.status}`);
+    } else if (error.request) {
+      // Request was made but no response was received
+      console.error("API Error (No Response):", error.message);
+      throw new Error("No response received from server. Please check your network.");
+    } else {
+      // Something happened in setting up the request
+      console.error("API Error (Request Setup):", error.message);
+      throw new Error(error.message || "Unexpected error occurred.");
     }
   };
+  
+  
 
-
-  // Fetch my posted job
-  const myJobPost = async (email) => {
-    try {
-      const response = await api.get(`/jobs/${email}`);
-      return handleResponse(response);
-    } catch (error) {
-      handleError(error);
-    }
-  };
-
-
-
-
-  // Fetch job application by ID
-  const getJobApplication = async (jobId) => {
-    try {
-      const response = await api.get(`/viewJobApplication/${jobId}`);
-      return handleResponse(response);
-    } catch (error) {
-      handleError(error);
-    }
-  };
-
-  // Update job application status
-  const updateJobApplicationStatus = async (id, statusData) => {
-    try {
-      const response = await api.patch(`/jobApplication-view/${id}`, { statusData });
-      return handleResponse(response);
-    } catch (error) {
-      handleError(error);
-    }
-  };
-
-  // Delete my job post
-  const deleteMyJobPost = async (id) => {
-    try {
-      const response = await api.delete(`/jobs/${id}`);
-      return handleResponse(response);
-    } catch (error) {
-      handleError(error);
-    }
-  };
-
-  // Fetch all jobs
-  const allJob = async () => {
-    try {
-      const response = await api.get("/allJob");
-      return handleResponse(response);
-    } catch (error) {
-      handleError(error);
-    }
-  };
-
-  // Fetch job details by ID
-  const fetchJobDetails = async (id) => {
-    try {
-      const response = await api.get(`/jobDetails/${id}`);
-      return handleResponse(response);
-    } catch (error) {
-      handleError(error);
-    }
-  };
-
-  // Update job post
-  const updateJobPost = async (updatedData, id) => {
-    try {
-      const response = await api.put(`/jobs/${id}`, updatedData);
-      return response.data;
-    } catch (error) {
-      console.error(`Error updating job post with ID: ${id}`, error);
-      throw error;
-    }
-  };
 
   // JWT Token Validation
   const jwtTokenValidation = async (data) => {
@@ -183,77 +115,6 @@ const ApiComponent = () => {
   };
 
 
-
-  // Post job application
-  const postJobApplication = async (data) => {
-    try {
-      const response = await api.post(`/job-applications`, data);
-      return handleResponse(response);
-    } catch (error) {
-      handleError(error);
-    }
-  };
-
-
-  // Post job application
-
-
-  // Get applied jobs
-  const getAppliedJob = async (email) => {
-    try {
-      const response = await api.get(`/applied-job/${email}`);
-      return handleResponse(response);
-    } catch (error) {
-      handleError(error);
-    }
-  };
-
-  // Delete applied job
-  const deleteAppliedJob = async (id, jobId) => {
-    try {
-      const response = await api.delete(`/applied-job/${id}?jobId=${jobId}`);
-      return handleResponse(response);
-    } catch (error) {
-      handleError(error);
-    }
-  };
-
-
-
-
-
-
-
-
-  // Post a job
-  const postAddJob = async (data) => {
-    try {
-      const response = await api.post(`/addJob`, data);
-      return handleResponse(response);
-    } catch (error) {
-      handleError(error);
-    }
-  };
-
-  // Save a job
-  const saveJob = async (data) => {
-    try {
-      const response = await api.post(`/saveJob`, data);
-      return handleResponse(response);
-    } catch (error) {
-      handleError(error);
-    }
-  };
-
-  // Get saved jobs
-  const getMySavedJobs = async (email) => {
-    try {
-      const response = await api.get(`/saveJob/${email}`);
-      return handleResponse(response);
-    } catch (error) {
-      handleError(error);
-    }
-  };
 
 
 // start here for project
@@ -278,29 +139,65 @@ const getVolunteerPosts = async (email) => {
 
 
 
+const getVolunteerPostById = async (id) => {
+  try {
+    const response = await api.get(`/volunteer-post/${id}`);
+    return handleResponse(response);
+  } catch (error) {
+    handleError(error);
+  }
+};
+
+const postApplyVolunteer = async (data) => {
+  
+  try {
+    const response = await api.post(`/apply-for-volunteer`, {data});
+    return handleResponse(response);
+  } catch (error) {
+    handleError(error);
+  }
+};
+
+// const decreaseVolunteerNeed = async (id) => {
+//   try {
+//     console.log(id);
+//     const response = await api.patch(`/decrease-volunteer-need/${id}`);
+//     return handleResponse(response);
+//   } catch (error) {
+//     handleError(error);
+//   }
+// };
+
+
+const decreaseVolunteerNeed = async (id) => {
+  try {
+    console.log("Decrementing volunteers needed for post ID:", id);
+    const response = await api.patch(`/decrease-volunteer-need/${id}`);
+    console.log("API Response:", response.data);
+    return handleResponse(response);
+  } catch (error) {
+    console.error("Error in decreaseVolunteerNeed:", error.message);
+    handleError(error);
+  }
+};
+
+
+
+
 
 
   // Return the methods and logic for usage in components
   return {
-    fetchJobs,
-    myJobPost,
-    getJobApplication,
-    updateJobApplicationStatus,
-    deleteMyJobPost,
-    allJob,
-    fetchJobDetails,
-    updateJobPost,
+   
     jwtTokenValidation,
     logoutRoute,
-    postJobApplication,
-    getAppliedJob,
-    deleteAppliedJob,
-    postAddJob,
-    saveJob,
-    getMySavedJobs,
+    
 
     postVolunteerNeed,
     getVolunteerPosts,
+    getVolunteerPostById,
+    postApplyVolunteer,
+    decreaseVolunteerNeed,
   };
 };
 

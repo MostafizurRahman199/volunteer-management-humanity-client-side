@@ -1,13 +1,7 @@
-Example Color Palette:
-Color Purpose	Hex Code
-Primary Green	#4CAF50
-Accent Yellow	#FFC107
-Background White	#FFFFFF
-Secondary Blue	#2196F3
-Neutral Light Gray	#F5F5F5
-Pop Orange	#FF5722
-Design Example:
-Header: Blue background with white text and green call-to-action buttons.
-Cards/Sections: Light gray background with green titles and yellow highlights.
-Buttons: Green for primary actions, orange for urgent/secondary actions.
-Footer: Blue background with white text.
+color theme
+
+#41B3A2
+
+#0D7C66
+
+#BDE8CA
