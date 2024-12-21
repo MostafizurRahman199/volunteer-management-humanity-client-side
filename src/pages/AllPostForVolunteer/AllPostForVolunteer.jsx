@@ -1,0 +1,127 @@
+import React, { useState, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
+import ApiComponent from "../../API/ApiComponent";
+import { useDarkMode } from "../../Context/DarkModeContext";
+
+const AllPostForVolunteer = () => {
+  const { darkMode } = useDarkMode();
+  const { getVolunteerPosts } = ApiComponent();
+  const navigate = useNavigate();
+
+  // Search, filter, and sort states
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [sortOrder, setSortOrder] = useState("asc");
+
+  // Fetch data using React Query
+  const { data: posts, isLoading, isError } = useQuery({
+    queryKey: ["volunteerPosts"],
+    queryFn: getVolunteerPosts,
+  });
+
+  // Handle search, filter, and sort logic
+  const filteredPosts = posts
+    ?.filter((post) => {
+      const searchMatch =
+        post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        post.location.toLowerCase().includes(searchTerm.toLowerCase());
+      const categoryMatch =
+        !selectedCategory || post.category === selectedCategory;
+      return searchMatch && categoryMatch;
+    })
+    ?.sort((a, b) => {
+      if (sortOrder === "asc") {
+        return new Date(a.deadline) - new Date(b.deadline);
+      }
+      return new Date(b.deadline) - new Date(a.deadline);
+    });
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Something went wrong. Please try again later.</div>;
+
+  return (
+    <div
+      className={`p-6 max-w-6xl mx-auto bg-${
+        darkMode ? "gray-800 text-white" : "white"
+      }`}
+    >
+      <h2 className="text-2xl font-semibold mb-6">Volunteer Need Posts</h2>
+
+      {/* Search, Filter, Sort */}
+      <div className="flex flex-col md:flex-row items-center gap-4 mb-6">
+        {/* Search */}
+        <input
+          type="text"
+          placeholder="Search by title or location..."
+          className="input input-bordered w-full md:w-1/3"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+
+        {/* Filter by Category */}
+        <select
+          className="select select-bordered w-full md:w-1/4"
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+        >
+          <option value="">All Categories</option>
+          <option value="education">Education</option>
+          <option value="healthcare">Healthcare</option>
+          <option value="social-service">Social Service</option>
+          <option value="animal-welfare">Animal Welfare</option>
+        </select>
+
+        {/* Sort by Deadline */}
+        <select
+          className="select select-bordered w-full md:w-1/4"
+          value={sortOrder}
+          onChange={(e) => setSortOrder(e.target.value)}
+        >
+          <option value="asc">Sort by Deadline (Ascending)</option>
+          <option value="desc">Sort by Deadline (Descending)</option>
+        </select>
+      </div>
+
+      {/* Responsive Grid for Posts */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredPosts?.map((post) => (
+          <div
+            key={post._id}
+            className="card bg-base-100 shadow-md rounded-lg p-4 border border-gray-200"
+          >
+            {/* Thumbnail */}
+            <img
+              src={post.thumbnail}
+              alt={post.title}
+              className="rounded-lg w-full h-48 object-cover mb-4"
+            />
+
+            {/* Title */}
+            <h3 className="text-lg font-bold mb-2">{post.title}</h3>
+
+            {/* Location */}
+            <p className="text-sm mb-2">
+              <strong>Location:</strong> {post.location}
+            </p>
+
+            {/* Volunteers Needed */}
+            <p className="text-sm mb-4">
+              <strong>Volunteers Needed:</strong> {post.volunteersNeeded}
+            </p>
+
+            {/* View Details Button */}
+            <button
+              className="btn btn-primary w-full"
+              onClick={() => navigate(`/volunteer-post-details/${post._id}`)}
+            >
+              View Details
+            </button>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default AllPostForVolunteer;

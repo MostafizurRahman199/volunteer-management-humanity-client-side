@@ -196,14 +196,7 @@ const ApiComponent = () => {
 
 
   // Post job application
-  const postVolunteerNeed = async (data) => {
-    try {
-      const response = await api.post(`/post-for-volunteer`, data);
-      return handleResponse(response);
-    } catch (error) {
-      handleError(error);
-    }
-  };
+
 
   // Get applied jobs
   const getAppliedJob = async (email) => {
@@ -230,7 +223,7 @@ const ApiComponent = () => {
 
 
 
-  
+
 
   // Post a job
   const postAddJob = async (data) => {
@@ -262,6 +255,31 @@ const ApiComponent = () => {
     }
   };
 
+
+// start here for project
+const postVolunteerNeed = async (data) => {
+  try {
+    const response = await api.post(`/post-for-volunteer`, data);
+    return handleResponse(response);
+  } catch (error) {
+    handleError(error);
+  }
+};
+
+
+const getVolunteerPosts = async (email) => {
+  try {
+    const response = await api.get(`/all-post-volunteer`);
+    return handleResponse(response);
+  } catch (error) {
+    handleError(error);
+  }
+};
+
+
+
+
+
   // Return the methods and logic for usage in components
   return {
     fetchJobs,
@@ -282,6 +300,7 @@ const ApiComponent = () => {
     getMySavedJobs,
 
     postVolunteerNeed,
+    getVolunteerPosts,
   };
 };
 

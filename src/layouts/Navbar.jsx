@@ -206,8 +206,8 @@ const Navbar = () => {
               <FaHome className="lg:inline-block mr-1" /> Home
             </Link>
 
-            <Link to="/allJob" className={getLinkStyle('/allJob')} onClick={() => setActiveLink('/allJob')}>
-              <VscOpenPreview className="lg:inline-block mr-1"/> All Job
+            <Link to="/all-post-volunteer" className={getLinkStyle('/all-post-volunteer')} onClick={() => setActiveLink('/all-post-volunteer')}>
+              <VscOpenPreview className="lg:inline-block mr-1"/> All Post Volunteer
             </Link>
 
             <Link to="/post-for-volunteer" className={getLinkStyle('/post-for-volunteer')} onClick={() => setActiveLink('/post-for-volunteer')}>
@@ -225,16 +225,9 @@ const Navbar = () => {
             </div>
 
 
-              <Link to="/applied-job" className={getLinkStyle('/applied-job')} onClick={() => setActiveLink('/applied-job')}>
-                {/* <FaUser className="lg:inline-block mr-1" /> My Applied Job */}
-      
-                <VscGitStashApply className="lg:inline-block mr-1"/>My Applied Job
-              </Link>
+           
 
-              <Link to="/myJobPost" className={getLinkStyle('/myJobPost')} onClick={() => setActiveLink('/myJobPost')}>
-      
-                <BsFillFileEarmarkPostFill className="lg:inline-block mr-1"  />    My Posted Job
-              </Link>
+            
               
               <Link to="/saveJob" className={getLinkStyle('/saveJob')} onClick={() => setActiveLink('/saveJob')}>
                 {/* <IoGameControllerOutline className="lg:inline-block mr-1" />Saved Job */}

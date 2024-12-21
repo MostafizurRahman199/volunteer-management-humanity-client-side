@@ -15,6 +15,7 @@ import ErrorPage from "../pages/ErrorPage";
 
 
 import PostForVolunteer from "../pages/PostForVolunteer/PostForVolunteer";
+import AllPostForVolunteer from "../pages/AllPostForVolunteer/AllPostForVolunteer";
 
 
 
@@ -72,10 +73,6 @@ const router = createBrowserRouter([
                 ),
                
             },
-           
-           
-           
-        
             {
                 path: "/post-for-volunteer",
                 element: (
@@ -85,6 +82,19 @@ const router = createBrowserRouter([
                         </Helmet>
                         <PrivateRoute>
                           <PostForVolunteer></PostForVolunteer>
+                        </PrivateRoute>
+                    </>
+                ),
+            },
+            {
+                path: "/all-post-volunteer",
+                element: (
+                    <>
+                        <Helmet>
+                            <title>Humanity - All Post Volunteer</title>
+                        </Helmet>
+                        <PrivateRoute>
+                          <AllPostForVolunteer></AllPostForVolunteer>
                         </PrivateRoute>
                     </>
                 ),
