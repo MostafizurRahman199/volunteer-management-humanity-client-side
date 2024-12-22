@@ -144,16 +144,15 @@ const handleOneModalCondition = () => {
     
 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                    {/* Category */}
-  <div className="flex items-center mb-4 bg-white rounded-md shadow p-3">
-
-
-<IoTimeOutline className="text-[#41B3A2] mr-2 text-2xl"/>
+  <div className={`flex items-center mb-4  rounded-md shadow p-3 ${darkMode == true ? "bg-black/30" : ""}`}>
+    <IoTimeOutline className="text-[#41B3A2] mr-2 text-2xl"/>
     <div>
       <p className="text-lg font-semibold text-gray-700">Posted At</p>
       <p className="text-lg">{new Date(postDetails.createdAt).toLocaleString()}</p>
     </div>
   </div>
-  <div className="flex items-center mb-4 bg-white rounded-md shadow p-3">
+
+  <div className={`flex items-center mb-4  rounded-md shadow p-3 ${darkMode == true ? "bg-black/30" : ""}`}>
     <FaTag className="text-[#41B3A2] mr-2 text-2xl" />
     <div>
       <p className="text-lg font-semibold text-gray-700">Category</p>
@@ -162,7 +161,7 @@ const handleOneModalCondition = () => {
   </div>
 
   {/* Location */}
-  <div className="flex items-center mb-4 bg-white rounded-md shadow p-3">
+  <div className={`flex items-center mb-4  rounded-md shadow p-3 ${darkMode == true ? "bg-black/30" : ""}`}>
     <FaMapMarkerAlt className="text-[#41B3A2] mr-2 text-2xl" />
     <div>
       <p className="text-lg font-semibold text-gray-700">Location</p>
@@ -171,7 +170,7 @@ const handleOneModalCondition = () => {
   </div>
 
   {/* Volunteers Needed */}
-  <div className="flex items-center mb-4 bg-white rounded-md shadow p-3">
+  <div className={`flex items-center mb-4  rounded-md shadow p-3 ${darkMode == true ? "bg-black/30" : ""}`}>
     <FaUsers className="text-[#41B3A2] mr-2 text-2xl" />
     <div className="flex gap-2 items-center">
       <p className="text-lg font-semibold text-gray-700">Volunteers Needed : </p>
@@ -180,7 +179,7 @@ const handleOneModalCondition = () => {
   </div>
 
     {/* Organizer */}
-    <div className="flex items-center bg-white rounded-md shadow p-3">
+    <div className={`flex items-center mb-4 bg-white rounded-md shadow p-3 ${darkMode == true ? "bg-black/30" : ""}`}>
     <FaUserTie className="text-[#41B3A2] mr-2 text-2xl" />
     <div>
       <p className="text-lg font-semibold text-gray-700">Organizer</p>
@@ -191,7 +190,7 @@ const handleOneModalCondition = () => {
   </div>
 
   {/* Deadline */}
-  <div className="flex items-center mb-4 bg-white rounded-md shadow p-3 h-full">
+  <div className={`flex items-center mb-4 bg-white rounded-md shadow p-3 ${darkMode == true ? "bg-black/30" : ""}`} >
     <FaCalendarAlt className="text-[#41B3A2] mr-2 text-2xl" />
     <div>
       <p className="text-lg font-semibold text-gray-700">Deadline</p>

@@ -17,6 +17,8 @@ import ErrorPage from "../pages/ErrorPage";
 import PostForVolunteer from "../pages/PostForVolunteer/PostForVolunteer";
 import AllPostForVolunteer from "../pages/AllPostForVolunteer/AllPostForVolunteer";
 import VolunteerPostdetails from "../pages/VolunteerPostDetails/VolunteerPostdetails";
+import MyVolunteerNeedPost from "../pages/MyVolunteerNeedPost/MyVolunteerNeedPost";
+import ManageMyPostRequest from "../pages/ManageMyPostRequest/ManageMyPostRequest";
 
 
 
@@ -94,9 +96,9 @@ const router = createBrowserRouter([
                         <Helmet>
                             <title>Humanity - All Post Volunteer</title>
                         </Helmet>
-                        <PrivateRoute>
+                     
                           <AllPostForVolunteer></AllPostForVolunteer>
-                        </PrivateRoute>
+                       
                     </>
                 ),
             },
@@ -109,6 +111,19 @@ const router = createBrowserRouter([
                         </Helmet>
                         <PrivateRoute>
                           <VolunteerPostdetails></VolunteerPostdetails>
+                        </PrivateRoute>
+                    </>
+                ),
+            },
+            {
+                path: "/ManageMyPostRequest",
+                element: (
+                    <>
+                        <Helmet>
+                            <title>Humanity - My Volunteer Need Post</title>
+                        </Helmet>
+                        <PrivateRoute>
+                          <ManageMyPostRequest></ManageMyPostRequest>
                         </PrivateRoute>
                     </>
                 ),

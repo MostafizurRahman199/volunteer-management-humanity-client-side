@@ -1,7 +1,7 @@
 color theme
 
-#41B3A2
+#41B3A2 (normal)
 
-#0D7C66
+#0D7C66 (deep)
 
-#BDE8CA
+#BDE8CA (light)

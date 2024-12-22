@@ -214,6 +214,11 @@ const Navbar = () => {
               <VscOpenPreview className="lg:inline-block mr-1"/> Post for volunteer 
             </Link>
 
+
+            <Link to="/ManageMyPostRequest" className={getLinkStyle('/ManageMyPostRequest')} onClick={() => setActiveLink('/ManageMyPostRequest')}>
+              <VscOpenPreview className="lg:inline-block mr-1"/> My Volunteer Need Post
+            </Link>
+
         
 
               <div   className={`dropdown dropdown-bottom ${getLinkStyle('/my-profile')}`} onClick={() => setActiveLink('/my-profile')}>

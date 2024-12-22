@@ -186,6 +186,53 @@ const decreaseVolunteerNeed = async (id) => {
 
 
 
+  // Fetch all posts by a specific user
+  const getVolunteerPostsByEmail = async (email) => {
+    try {
+      const response = await api.get(`/volunteer-posts/${email}`);
+      return handleResponse(response);
+    } catch (error) {
+      handleError(error);
+    }
+  };
+
+
+  // Fetch a specific post by ID
+  const getMyVolunteerPostById = async (id) => {
+    try {
+      const response = await api.get(`/volunteer-post/${id}`);
+      return handleResponse(response);
+    } catch (error) {
+      handleError(error);
+    }
+  };
+
+  // Update a post
+  const updateVolunteerPost = async (data) => {
+    console.log(data._id);
+    try {
+      const response = await api.put(`/update-volunteer-post/${data._id}`, data);
+      return response;
+    } catch (error) {
+      return error;
+    }
+  };
+
+  // Delete a post
+  const deletePost = async (id) => {
+    try {
+      const response = await api.delete(`/delete-volunteer-post/${id}`);
+      return handleResponse(response);
+    } catch (error) {
+      handleError(error);
+    }
+  };
+
+
+
+
+
+
   // Return the methods and logic for usage in components
   return {
    
@@ -198,6 +245,15 @@ const decreaseVolunteerNeed = async (id) => {
     getVolunteerPostById,
     postApplyVolunteer,
     decreaseVolunteerNeed,
+
+
+
+    getVolunteerPostsByEmail,
+    getMyVolunteerPostById,
+    updateVolunteerPost,
+    deletePost,
+    
+  
   };
 };
 

@@ -5,7 +5,7 @@ const DarkModeContext = createContext();
 
 // Provider component
 export const DarkModeProvider = ({ children }) => {
-  const [darkMode, setDarkMode] = useState(true);
+  const [darkMode, setDarkMode] = useState(false);
 
   // Load dark mode preference from localStorage on mount
   useEffect(() => {

@@ -14,7 +14,7 @@ const PostForVolunteer = () => {
   const { postVolunteerNeed } = ApiComponent();
 
   const [formData, setFormData] = useState({
-    thumbnail: "", // URL instead of file
+    thumbnail: "",
     title: "",
     description: "",
     category: "",
@@ -26,7 +26,6 @@ const PostForVolunteer = () => {
     createdAt: new Date(),
   });
 
-  // Mutation to handle form submission
   const mutation = useMutation({
     mutationFn: (newPost) => postVolunteerNeed(newPost),
     onSuccess: () => {
@@ -37,11 +36,7 @@ const PostForVolunteer = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-
-      // Navigate to another page (optional)
       navigate("/");
-
-      // Reset the form
       setFormData({
         thumbnail: "",
         title: "",
@@ -55,7 +50,7 @@ const PostForVolunteer = () => {
         createdAt: new Date(),
       });
     },
-    onError: (error) => {
+    onError: () => {
       Swal.fire({
         position: "top-center",
         icon: "error",
@@ -66,34 +61,58 @@ const PostForVolunteer = () => {
     },
   });
 
-  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     const formattedFormData = {
       ...formData,
-      deadline: formData.deadline.toISOString(), // Convert date to ISO format
+      deadline: formData.deadline.toISOString(),
     };
-    console.log(formattedFormData);
     mutation.mutate(formattedFormData);
   };
 
-  // Handle input changes
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   return (
-    <div
-      className={`p-6 max-w-3xl mx-auto bg-${
-        darkMode ? "gray-800 text-white" : "white"
-      } rounded-lg shadow-lg my-10`}
+   <div className="w-full py-10 " 
+   
+   style={{
+    backgroundImage: "url('https://img.freepik.com/premium-photo/black-girl-child-reaching-right-side-view_943281-37556.jpg')",
+//    style={{
+//     backgroundImage: "url('https://www.caringnetwork.com/wp-content/uploads/2023/01/10-Benefits-of-Volunteering-Your-Time-Regularly-2880w.webp')",
+
+
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+  
+
+  }}>
+     <div
+      className={`p-8 md:py-16 md:px-16 max-w-4xl mx-auto bg-black/50 ${
+        darkMode ? "text-white" : "text-gray-800"
+      }  shadow-xl`}
+      
     >
-      <h2 className="text-2xl font-semibold mb-4">Add Volunteer Need Post</h2>
-      <form onSubmit={handleSubmit}>
+      <h2
+        className={`text-3xl font-bold text-center mb-6 ${
+          darkMode ? "text-[#BDE8CA]" : "text-white"
+        }`}
+      >
+        Add Volunteer Need Post
+      </h2>
+      <form
+        onSubmit={handleSubmit}
+        className="grid grid-cols-1 md:grid-cols-2 gap-6"
+      >
         {/* Thumbnail URL */}
-        <div className="mb-4">
-          <label className="block text-sm font-medium mb-2" htmlFor="thumbnail">
+        <div>
+          <label
+            htmlFor="thumbnail"
+            className="block text-sm font-medium mb-2 text-white"
+          >
             Thumbnail URL
           </label>
           <input
@@ -102,15 +121,18 @@ const PostForVolunteer = () => {
             id="thumbnail"
             value={formData.thumbnail}
             onChange={handleInputChange}
-            className="input input-bordered w-full"
+            className="w-full px-4 py-2 text-black border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#41B3A2]"
             placeholder="Enter thumbnail URL"
             required
           />
         </div>
 
         {/* Post Title */}
-        <div className="mb-4">
-          <label className="block text-sm font-medium mb-2" htmlFor="title">
+        <div>
+          <label
+            htmlFor="title"
+            className="block text-sm font-medium mb-2 text-white"
+          >
             Post Title
           </label>
           <input
@@ -119,17 +141,17 @@ const PostForVolunteer = () => {
             id="title"
             value={formData.title}
             onChange={handleInputChange}
-            className="input input-bordered w-full"
+            className="w-full px-4 py-2 text-black border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#41B3A2]"
             placeholder="Enter post title"
             required
           />
         </div>
 
         {/* Description */}
-        <div className="mb-4">
+        <div className="md:col-span-2">
           <label
-            className="block text-sm font-medium mb-2"
             htmlFor="description"
+            className="block text-sm font-medium mb-2 text-white"
           >
             Description
           </label>
@@ -138,15 +160,19 @@ const PostForVolunteer = () => {
             id="description"
             value={formData.description}
             onChange={handleInputChange}
-            className="textarea textarea-bordered w-full"
+            className="w-full px-4 py-2 text-black border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#41B3A2]"
             placeholder="Enter post description"
+            rows="4"
             required
           ></textarea>
         </div>
 
         {/* Category */}
-        <div className="mb-4">
-          <label className="block text-sm font-medium mb-2" htmlFor="category">
+        <div>
+          <label
+            htmlFor="category"
+            className="block text-sm font-medium mb-2 text-white"
+          >
             Category
           </label>
           <select
@@ -154,7 +180,7 @@ const PostForVolunteer = () => {
             id="category"
             value={formData.category}
             onChange={handleInputChange}
-            className="select select-bordered w-full"
+            className="w-full px-4 py-2 text-black border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#41B3A2]"
             required
           >
             <option value="">Select a category</option>
@@ -166,8 +192,11 @@ const PostForVolunteer = () => {
         </div>
 
         {/* Location */}
-        <div className="mb-4">
-          <label className="block text-sm font-medium mb-2" htmlFor="location">
+        <div>
+          <label
+            htmlFor="location"
+            className="block text-sm font-medium mb-2 text-white"
+          >
             Location
           </label>
           <input
@@ -176,19 +205,19 @@ const PostForVolunteer = () => {
             id="location"
             value={formData.location}
             onChange={handleInputChange}
-            className="input input-bordered w-full"
+            className="w-full px-4 py-2 text-black border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#41B3A2]"
             placeholder="Enter location"
             required
           />
         </div>
 
-        {/* No. of Volunteers Needed */}
-        <div className="mb-4">
+        {/* Volunteers Needed */}
+        <div>
           <label
-            className="block text-sm font-medium mb-2"
             htmlFor="volunteersNeeded"
+            className="block text-sm font-medium mb-2 text-white"
           >
-            No. of Volunteers Needed
+            Volunteers Needed
           </label>
           <input
             type="number"
@@ -196,68 +225,81 @@ const PostForVolunteer = () => {
             id="volunteersNeeded"
             value={formData.volunteersNeeded}
             onChange={handleInputChange}
-            className="input input-bordered w-full"
+            className="w-full px-4 py-2 text-black border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#41B3A2]"
             placeholder="Enter number of volunteers"
             required
           />
         </div>
 
         {/* Deadline */}
-        <div className="mb-4">
-          <label className="block text-sm font-medium mb-2" htmlFor="deadline">
+        <div>
+          <label
+            htmlFor="deadline"
+            className="block text-sm font-medium mb-2 text-white"
+          >
             Deadline
           </label>
           <input
             type="date"
             name="deadline"
-            value={formData.deadline.toISOString().split("T")[0]} // Format date to YYYY-MM-DD
+            value={formData.deadline.toISOString().split("T")[0]}
             onChange={(e) =>
               setFormData((prevData) => ({
                 ...prevData,
                 deadline: new Date(e.target.value),
               }))
             }
-            className="input input-bordered w-full"
+            className="w-full px-4 py-2 text-black border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#41B3A2]"
             required
           />
         </div>
 
-        {/* Organizer Info */}
-        <div className="mb-4">
-          <label className="block text-sm font-medium mb-2">
+        {/* Organizer Name */}
+        <div>
+          <label
+            htmlFor="organizerName"
+            className="block text-sm font-medium mb-2 text-white"
+          >
             Organizer Name
           </label>
           <input
             type="text"
+            name="organizerName"
             value={formData.organizerName}
             readOnly
-            className="input input-bordered w-full"
+            className="w-full px-4 py-2 text-black bg-gray-100 border border-gray-300 rounded-md focus:outline-none cursor-not-allowed"
           />
         </div>
 
-        <div className="mb-4">
-          <label className="block text-sm font-medium mb-2">
+        {/* Organizer Email */}
+        <div>
+          <label
+            htmlFor="organizerEmail"
+            className="block text-sm font-medium mb-2 text-white"
+          >
             Organizer Email
           </label>
           <input
             type="email"
+            name="organizerEmail"
             value={formData.organizerEmail}
             readOnly
-            className="input input-bordered w-full"
+            className="w-full px-4 py-2 text-black bg-gray-100 border border-gray-300 rounded-md focus:outline-none cursor-not-allowed"
           />
         </div>
 
         {/* Submit Button */}
-        <button
-          type="submit"
-          className={`btn ${
-            darkMode ? "btn-secondary" : "btn-primary"
-          } w-full`}
-        >
-          Add Post
-        </button>
+        <div className="md:col-span-2 text-center">
+          <button
+            type="submit"
+            className="w-full py-3 bg-[#41B3A2] text-white font-semibold rounded-md hover:bg-[#0D7C66] transition-colors duration-300"
+          >
+            Submit
+          </button>
+        </div>
       </form>
     </div>
+   </div>
   );
 };
 
