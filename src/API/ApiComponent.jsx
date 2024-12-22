@@ -231,6 +231,67 @@ const decreaseVolunteerNeed = async (id) => {
 
 
 
+  // __________my volunteer request  page
+
+
+  const getVolunteerRequestsByEmail = async (email) => {
+    try {
+      const response = await api.get(`/volunteer-requests/${email}`);
+      return handleResponse(response); // Simplified handling
+    } catch (error) {
+      console.error("Error fetching volunteer requests:", error.message);
+      throw new Error(error.response?.data?.message || "Failed to fetch requests");
+    }
+  };
+  
+  const cancelVolunteerRequest = async (data) => {
+ 
+    console.log(data);
+    try {
+      const response = await api.post(`/cancel-volunteer-request`,  data );
+      return response; // Simplified handling
+    } catch (error) {
+      console.error("Error canceling volunteer request:", error.message);
+      throw new Error(error.response?.data?.message || "Failed to cancel request");
+    }
+  };
+  
+
+
+  // home -> volunteer need now
+  const getSortedVolunteerPosts = async () => {
+    try {
+      const response = await api.get("/volunteer-posts-sorted");
+      return response.data; 
+    } catch (error) {
+      console.error("Error fetching sorted posts:", error.message);
+      throw error;
+    }
+  };
+
+
+
+  // ________Work Experience
+  const postWorkExperience = async (data) => {
+    try {
+        const response = await api.post('/work-experience', data);
+        return response.data; // Return response data
+    } catch (error) {
+        console.error("Error posting work experience:", error.message);
+        throw new Error(error.response?.data?.message || "Failed to post work experience.");
+    }
+};
+
+const getWorkExperience = async () => {
+    try {
+        const response = await api.get('/work-experience');
+        return response.data; // Return work experience data
+    } catch (error) {
+        console.error("Error fetching work experience:", error.message);
+        throw new Error(error.response?.data?.message || "Failed to fetch work experience.");
+    }
+};
+
 
 
   // Return the methods and logic for usage in components
@@ -253,6 +314,14 @@ const decreaseVolunteerNeed = async (id) => {
     updateVolunteerPost,
     deletePost,
     
+
+    getVolunteerRequestsByEmail,
+    cancelVolunteerRequest,
+
+    getSortedVolunteerPosts,
+
+    postWorkExperience, 
+    getWorkExperience, 
   
   };
 };

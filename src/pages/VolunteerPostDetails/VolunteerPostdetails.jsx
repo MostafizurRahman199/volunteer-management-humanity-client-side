@@ -9,6 +9,8 @@ import Swal from "sweetalert2";
 import { IoTimeOutline } from "react-icons/io5";
 // import { FaMapMarkerAlt, FaUsers, FaCalendarAlt, FaUserTie } from "react-icons/fa";
 import { FaTag, FaMapMarkerAlt, FaUsers, FaCalendarAlt, FaUserTie } from "react-icons/fa";
+import Loading from "../../components/Loading/Loading";
+import ErrorPage from "../../components/Error.jsx/ErrorPage";
 
 const VolunteerPostDetails = () => {
 
@@ -111,8 +113,8 @@ const handleOneModalCondition = () => {
   };
   
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Something went wrong. Please try again later.</div>;
+  if (isLoading) return <Loading></Loading>;
+  if (isError) return <ErrorPage></ErrorPage>;
 
   return (
 

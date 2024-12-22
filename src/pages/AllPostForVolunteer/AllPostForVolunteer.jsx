@@ -86,7 +86,9 @@ const AllPostForVolunteer = () => {
         {filteredPosts?.map((post) => (
           <div
             key={post._id}
-            className={`card  shadow-md rounded-2xl p-4 border border-gray-200 ${darkMode ? "text-white bg-[#1A1A1D]" : "text-gray-800 bg-white"}`}
+            className={`card   rounded-2xl p-4  border-gray-200 
+                shadow-lg  overflow-hidden border transform hover:scale-105 transition-transform duration-300
+                ${darkMode ? "text-white bg-[#1A1A1D]" : "text-gray-800 bg-white"}`}
           >
             {/* Thumbnail */}
             <img

@@ -80,6 +80,24 @@ const Navbar = () => {
 
 
 
+  // useEffect(() => {
+  //   setActiveLink(location.pathname);
+  // }, [location]);
+
+
+  // Check if the current route falls under the "My Profile" section
+  const isProfileActive = ["/my-profile", "/post-for-volunteer", "/ManageMyPostRequest"].includes(activeLink);
+
+  // Function to get the style for a link
+  // const getLinkStyle = (path) => `
+  //   relative px-2 py-2 text-sm font-bold font_header transition-colors duration-200
+  //   ${activeLink === path ? "text-[#A91D3A]" : "text-black hover:text-[#A91D3A]"}
+  //   before:absolute before:bottom-0 before:left-0 before:w-full before:h-0.5
+  //   before:bg-[#A91D3A] before:transform before:scale-x-0 before:transition-transform
+  //   before:duration-300 hover:before:scale-x-100
+  //   ${activeLink === path ? "before:scale-x-100" : ""}
+  // `;
+
 
 
   // ___________________________logout handler
@@ -210,24 +228,66 @@ const Navbar = () => {
               <VscOpenPreview className="lg:inline-block mr-1"/> All Post Volunteer
             </Link>
 
-            <Link to="/post-for-volunteer" className={getLinkStyle('/post-for-volunteer')} onClick={() => setActiveLink('/post-for-volunteer')}>
+            {/* <Link to="/post-for-volunteer" className={getLinkStyle('/post-for-volunteer')} onClick={() => setActiveLink('/post-for-volunteer')}>
               <VscOpenPreview className="lg:inline-block mr-1"/> Post for volunteer 
             </Link>
 
 
             <Link to="/ManageMyPostRequest" className={getLinkStyle('/ManageMyPostRequest')} onClick={() => setActiveLink('/ManageMyPostRequest')}>
               <VscOpenPreview className="lg:inline-block mr-1"/> My Volunteer Need Post
-            </Link>
+            </Link> */}
 
         
 
-              <div   className={`dropdown dropdown-bottom ${getLinkStyle('/my-profile')}`} onClick={() => setActiveLink('/my-profile')}>
+              {/* <div   className={`dropdown dropdown-bottom ${getLinkStyle('/my-profile')}`} onClick={() => setActiveLink('/my-profile')}>
               <div tabIndex={0} role="button" className="">My Profile</div>
               <ul tabIndex={0} className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow">
-                <li><Link to={"/"}>Add Volunteer need Post</Link></li>
-                <li><Link to={"/"}>Manage My Posts </Link></li>
+               
+                <li className={`my-1`}
+               
+                ><Link to={"/post-for-volunteer"}>Add Volunteer need Post</Link></li>
+
+                <li className={`my-1`}
+          
+                
+                ><Link to={"/ManageMyPostRequest"}>Manage My Posts </Link></li>
               </ul>
-            </div>
+            </div> */}
+
+
+<div className={`dropdown dropdown-bottom ${isProfileActive ? "active-class" : ""}`}>
+      <div
+        tabIndex={0}
+        role="button"
+        className={`px-4 py-2 cursor-pointer ${
+          isProfileActive ? `text-[#A91D3A] border-b-[3px] border-[#A91D3A]` : "text-black hover:text-[#A91D3A]"
+        }`}
+        onClick={() => setActiveLink("/my-profile")}
+      >
+        My Profile
+      </div>
+      <ul
+        tabIndex={0}
+        className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+      >
+        <li className="my-1">
+          <Link
+            to="/post-for-volunteer"
+            className={getLinkStyle("/post-for-volunteer")}
+          >
+            Add Volunteer Need Post
+          </Link>
+        </li>
+        <li className="my-1">
+          <Link
+            to="/ManageMyPostRequest"
+            className={getLinkStyle("/ManageMyPostRequest")}
+          >
+            Manage My Posts
+          </Link>
+        </li>
+      </ul>
+    </div>
 
 
            

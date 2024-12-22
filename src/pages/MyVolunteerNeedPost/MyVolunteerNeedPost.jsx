@@ -112,9 +112,7 @@ const MyVolunteerNeedPost = ({viewFormat}) => {
   return (
     <div className="px-2 md:px-6">
 
-      <h2 className="text-md my-8 md:my-0 md:mb-6 md:text-3xl font-bold text-center text-[#0D7C66] ">
-        My Volunteer Need Posts
-      </h2>
+    
 
    
 
