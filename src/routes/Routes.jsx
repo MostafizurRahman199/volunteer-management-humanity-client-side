@@ -19,6 +19,7 @@ import AllPostForVolunteer from "../pages/AllPostForVolunteer/AllPostForVoluntee
 import VolunteerPostdetails from "../pages/VolunteerPostDetails/VolunteerPostdetails";
 import MyVolunteerNeedPost from "../pages/MyVolunteerNeedPost/MyVolunteerNeedPost";
 import ManageMyPostRequest from "../pages/ManageMyPostRequest/ManageMyPostRequest";
+import ReceivedRequest from "../pages/ReceivedRequest/ReceivedRequest";
 
 
 
@@ -124,6 +125,19 @@ const router = createBrowserRouter([
                         </Helmet>
                         <PrivateRoute>
                           <ManageMyPostRequest></ManageMyPostRequest>
+                        </PrivateRoute>
+                    </>
+                ),
+            },
+            {
+                path: "/received-request",
+                element: (
+                    <>
+                        <Helmet>
+                            <title>Humanity - Received Request</title>
+                        </Helmet>
+                        <PrivateRoute>
+                          <ReceivedRequest></ReceivedRequest>
                         </PrivateRoute>
                     </>
                 ),

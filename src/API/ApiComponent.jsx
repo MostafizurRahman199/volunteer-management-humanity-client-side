@@ -297,6 +297,58 @@ const getWorkExperience = async () => {
 
 
 
+// received request page
+const getOrganizerPosts = async (email) => {
+  try {
+    const response = await api.get(`/organizer-posts/${email}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching organizer posts:", error.message);
+    throw error;
+  }
+};
+
+
+const getAppliedRequests = async (postIds) => {
+  try {
+    const response = await api.post(`/applied-requests`, { postIds });
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching applied requests:", error.message);
+    throw error;
+  }
+};
+
+// const updateRequestStatus = async (id, status) => {
+//   console.log("THIS IS ID:", id);
+//   console.log("THIS IS STATUS:", status);
+//   const data = {data, is}
+//   try {
+//     const response = await api.post(`/update-request-status` , data);
+//     console.log("Response:", response.data); // Debug the response structure
+//     return response;
+//   } catch (error) {
+//     console.error("Error updating request status:", error.message);
+  
+//   }
+// };
+
+
+const updateRequestStatus = async (id, status) => {
+  try {
+    const data = {id, status}
+    const response = await api.post('/update-request-status', data);
+      return response.data; // Return response data
+  } catch (error) {
+      console.error("Error posting work experience:", error.message);
+      throw new Error(error.response?.data?.message || "Failed to post work experience.");
+  }
+};
+
+
+
+
+
   // Return the methods and logic for usage in components
   return {
    
@@ -325,6 +377,10 @@ const getWorkExperience = async () => {
 
     postWorkExperience, 
     getWorkExperience, 
+
+    getOrganizerPosts,
+    getAppliedRequests,
+    updateRequestStatus,
   
   };
 };

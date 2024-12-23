@@ -288,6 +288,14 @@ const Navbar = () => {
             Manage My Posts
           </Link>
         </li>
+        <li className="my-1">
+          <Link
+            to="/received-request"
+            className={getLinkStyle("/received-request")}
+          >
+            Received Request
+          </Link>
+        </li>
       </ul>
     </div>
 
