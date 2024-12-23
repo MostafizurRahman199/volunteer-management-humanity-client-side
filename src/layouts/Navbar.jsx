@@ -19,8 +19,8 @@ import { BsFillFileEarmarkPostFill } from "react-icons/bs";
 import { FiSave } from "react-icons/fi";
 import { useFirebaseAuth } from '../hooks/useAuth';
 import { useDarkMode } from '../Context/DarkModeContext';
-
-
+import { RiUserReceivedLine } from "react-icons/ri";
+import { FaRegSave } from "react-icons/fa";
 
 const Navbar = () => {
 
@@ -435,40 +435,55 @@ const Navbar = () => {
           </Link>
 
           <Link 
-            to="/allJob" 
-            className={`block ${getLinkStyle('/allJob')}`}
+            to="/all-post-volunteer" 
+            className={`block ${getLinkStyle('/all-post-volunteer')}`}
             onClick={() => {
-              setActiveLink('/allJob');
+              setActiveLink('/all-post-volunteer');
               setIsMobileMenuOpen(false);
             }}
           >
-             <VscOpenPreview className="inline-block mr-1" /> All Reviews
+             <VscOpenPreview className="inline-block mr-1" /> All Post
           </Link>
 
 
            <Link 
-            to="/my-profile" 
-            className={`block ${getLinkStyle('/my-profile')}`}
+            to="/post-for-volunteer" 
+            className={`block ${getLinkStyle('/post-for-volunteer')}`}
             onClick={() => {
-              setActiveLink('/my-profile');
+              setActiveLink('//post-for-volunteer');
               setIsMobileMenuOpen(false);
             }}
           >
-             <MdAddBox className="inline-block mr-1"/> Add Review
+             <MdAddBox className="inline-block mr-1"/> Add Post
           </Link>
 
 
            <Link 
-            to="/applied-job" 
-            className={`block ${getLinkStyle('/applied-job')}`}
+            to="/ManageMyPostRequest" 
+            className={`block ${getLinkStyle('/ManageMyPostRequest')}`}
             onClick={() => {
-              setActiveLink('/applied-job');
+              setActiveLink('/ManageMyPostRequest');
               setIsMobileMenuOpen(false);
             }}
           >
-            <FaUser className="inline-block mr-1" /> My Applied Job
+            <FaUser className="inline-block mr-1" /> Manage My Post
           </Link>
+          
+        
 
+           <Link 
+            to="/received-request" 
+            className={`block ${getLinkStyle('/received-request')}`}
+            onClick={() => {
+              setActiveLink('/received-request');
+              setIsMobileMenuOpen(false);
+            }}
+          >
+       
+          <RiUserReceivedLine  className="inline-block mr-1"/>
+           Received Request
+          </Link>
+           
            <Link 
             to="/saveJob" 
             className={`block ${getLinkStyle('/saveJob')}`}
@@ -477,8 +492,11 @@ const Navbar = () => {
               setIsMobileMenuOpen(false);
             }}
           >
-           <IoGameControllerOutline className="inline-block mr-1" /> Game WatchList
+          <FaRegSave className="inline-block mr-1" />
+           Saved Post
           </Link>
+         
+  
 
 
        { user && <>

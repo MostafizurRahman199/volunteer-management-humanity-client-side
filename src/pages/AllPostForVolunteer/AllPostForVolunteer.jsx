@@ -5,6 +5,8 @@ import ApiComponent from "../../API/ApiComponent";
 import { useDarkMode } from "../../Context/DarkModeContext";
 import Loading from "../../components/Loading/Loading";
 import ErrorPage from "../../components/Error.jsx/ErrorPage";
+import Aos from 'aos';
+
 
 const AllPostForVolunteer = () => {
   const { darkMode } = useDarkMode();
@@ -15,6 +17,12 @@ const AllPostForVolunteer = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
+
+
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+}, []);
+
 
   // Fetch data using React Query
   const { data: posts, isLoading, isError } = useQuery({
@@ -86,7 +94,8 @@ const AllPostForVolunteer = () => {
       {/* Responsive Grid for Posts */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredPosts?.map((post) => (
-          <div
+         <div  data-aos="fade-up">
+           <div
             key={post._id}
             className={`card   rounded-2xl p-4  border-gray-200 
                 shadow-lg  overflow-hidden border transform hover:scale-105 transition-transform duration-300
@@ -120,6 +129,7 @@ const AllPostForVolunteer = () => {
               View Details
             </button>
           </div>
+         </div>
         ))}
       </div>
     </div>

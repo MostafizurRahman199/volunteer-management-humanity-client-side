@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import ApiComponent from "../../API/ApiComponent";
 import Loading from "../Loading/Loading";
 import ErrorPage from "../Error.jsx/ErrorPage";
+import { div } from "motion/react-client";
+import Aos from 'aos';
 
 const VolunteerNeedNow = () => {
   const { getSortedVolunteerPosts } = ApiComponent();
@@ -13,6 +15,12 @@ const VolunteerNeedNow = () => {
     queryKey: ["upcomingVolunteerPosts"],
     queryFn: () => getSortedVolunteerPosts(),
   });
+
+
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+}, []);
+
 
   if (isLoading) return <Loading></Loading>;
   if (isError) return <ErrorPage></ErrorPage>;
@@ -26,7 +34,8 @@ const VolunteerNeedNow = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {posts?.slice(0, 6).map((post) => (
-            <div
+           <div data-aos="zoom-in-up">
+             <div
               key={post._id}
               className="shadow-lg rounded-2xl overflow-hidden border transform hover:scale-105 transition-transform duration-300"
             >
@@ -57,6 +66,7 @@ const VolunteerNeedNow = () => {
                 </Link>
               </div>
             </div>
+           </div>
           ))}
         </div>
 

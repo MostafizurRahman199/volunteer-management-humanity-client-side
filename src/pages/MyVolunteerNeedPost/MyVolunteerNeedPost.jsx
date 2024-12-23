@@ -7,6 +7,8 @@ import Swal from "sweetalert2";
 import ApiComponent from "../../API/ApiComponent";
 import Loading from "../../components/Loading/Loading";
 import ErrorPage from "../../components/Error.jsx/ErrorPage";
+import Aos from 'aos';
+
 
 
 const MyVolunteerNeedPost = ({viewFormat}) => {
@@ -15,6 +17,11 @@ const MyVolunteerNeedPost = ({viewFormat}) => {
   const email = user.email;
   const queryClient = useQueryClient();
   const {getVolunteerPostsByEmail,  deletePost, updateVolunteerPost } = ApiComponent();
+ 
+ 
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+}, []);
 
 //   const [viewFormat, setViewFormat] = useState("card"); // "card" or "table"
 
@@ -122,9 +129,10 @@ const MyVolunteerNeedPost = ({viewFormat}) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {posts?.length > 0 ? (
             posts.map((post) => (
-              <div
+            <div data-aos="flip-up">
+                  <div
                 key={post._id}
-                className="bg-[#BDE8CA] p-4 rounded-lg shadow-lg"
+                className="bg-[#BDE8CA] p-4 rounded-2xl hover:scale-105 transition-all duration-300 shadow-lg"
               >
                 <img
                   src={post.thumbnail}
@@ -155,6 +163,7 @@ const MyVolunteerNeedPost = ({viewFormat}) => {
                   </button>
                 </div>
               </div>
+            </div>
             ))
           ) : (
             <p className="text-center text-gray-600">No posts found.</p>
@@ -165,7 +174,7 @@ const MyVolunteerNeedPost = ({viewFormat}) => {
       {/* Table Format */}
       {viewFormat === "table" && (
         <div className="overflow-x-auto">
-          <table className="table w-full">
+          <table data-aos="fade-up" className="table w-full">
             <thead>
               <tr>
                 <th className="text-[#41B3A2]">Title</th>

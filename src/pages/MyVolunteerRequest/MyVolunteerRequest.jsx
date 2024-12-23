@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useFirebaseAuth } from "../../hooks/useAuth";
 import Swal from "sweetalert2";
@@ -7,6 +7,8 @@ import ApiComponent from "../../API/ApiComponent";
 import Loading from "../../components/Loading/Loading";
 import ErrorPage from "../../components/Error.jsx/ErrorPage";
 import { data } from "autoprefixer";
+import Aos from 'aos';
+
 
 const MyVolunteerRequest = ({viewFormat}) => {
   const { user } = useFirebaseAuth();
@@ -15,6 +17,9 @@ const MyVolunteerRequest = ({viewFormat}) => {
   
   const {getVolunteerRequestsByEmail, cancelVolunteerRequest} = ApiComponent();
 
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+}, []);
 
   // Fetch user-specific volunteer requests
   const { data: requests, isLoading, isError } = useQuery({
@@ -74,9 +79,10 @@ console.log(requests);
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {requests?.length > 0 ? (
             requests.map((request) => (
-              <div
+             <div data-aos="flip-up">
+               <div
                 key={request._id}
-                className="p-4 rounded-lg shadow-lg"
+                className="p-4 rounded-2xl hover:scale-105 transition-all duration-300 shadow-lg"
               >
                 <img
                   src={request.thumbnail}
@@ -111,6 +117,7 @@ console.log(requests);
                   </button>
                 </div>
               </div>
+             </div>
             ))
           ) : (
             <p className="text-center text-gray-600">No requests found.</p>
@@ -121,7 +128,7 @@ console.log(requests);
       {/* Table Format */}
       {viewFormat === "table" && (
         <div className="overflow-x-auto">
-          <table className="table w-full">
+          <table data-aos="fade-up" className="table w-full">
             <thead>
               <tr>
                 <th className="text-[#41B3A2]">Title</th>
@@ -135,7 +142,8 @@ console.log(requests);
             <tbody>
               {requests?.length > 0 ? (
                 requests.map((request) => (
-                  <tr key={request._id}>
+                  <tr  key={request._id} >
+
                     <td>{request.postTitle}</td>
                     <td>{request.category}</td>
                     <td>{request.location}</td>

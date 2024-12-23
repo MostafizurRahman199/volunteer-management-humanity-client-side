@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useFirebaseAuth } from "../../hooks/useAuth";
 import { useDarkMode } from "../../Context/DarkModeContext";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import ApiComponent from "../../API/ApiComponent";
+import postVolunteer from "../../../public/postVolunteer.json";
+import Aos from 'aos';
+
 
 const PostForVolunteer = () => {
   const { user } = useFirebaseAuth();
@@ -25,6 +28,11 @@ const PostForVolunteer = () => {
     organizerEmail: user.email || "",
     createdAt: new Date(),
   });
+
+
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+}, []);
 
   const mutation = useMutation({
     mutationFn: (newPost) => postVolunteerNeed(newPost),
@@ -78,22 +86,26 @@ const PostForVolunteer = () => {
   return (
    <div className="w-full py-10 " 
    
-   style={{
-    backgroundImage: "url('https://img.freepik.com/premium-photo/black-girl-child-reaching-right-side-view_943281-37556.jpg')",
 //    style={{
-//     backgroundImage: "url('https://www.caringnetwork.com/wp-content/uploads/2023/01/10-Benefits-of-Volunteering-Your-Time-Regularly-2880w.webp')",
+//     backgroundImage: "url('https://img.freepik.com/premium-photo/black-girl-child-reaching-right-side-view_943281-37556.jpg')",
+// //    style={{
+// //     backgroundImage: "url('https://www.caringnetwork.com/wp-content/uploads/2023/01/10-Benefits-of-Volunteering-Your-Time-Regularly-2880w.webp')",
 
 
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
+//     backgroundSize: 'cover',
+//     backgroundPosition: 'center',
+//     backgroundRepeat: 'no-repeat',
   
 
-  }}>
+//   }}
+  
+  
+  >
      <div
-      className={`p-8 md:py-16 md:px-16 max-w-4xl mx-auto bg-black/50 ${
+     data-aos="zoom-in"
+      className={`p-8 md:py-16 md:px-16 max-w-4xl mx-auto rounded-2xl  bg-[#0D7C66]/50 ${
         darkMode ? "text-white" : "text-gray-800"
-      }  shadow-xl`}
+      }  shadow-2xl`}
       
     >
       <h2
@@ -121,7 +133,7 @@ const PostForVolunteer = () => {
             id="thumbnail"
             value={formData.thumbnail}
             onChange={handleInputChange}
-            className="w-full px-4 py-2 text-black border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#41B3A2]"
+            className="w-full px-4 py-2 text-black border border-gray-300 rounded-2xl focus:outline-none focus:ring focus:ring-[#41B3A2]"
             placeholder="Enter thumbnail URL"
             required
           />
@@ -141,7 +153,7 @@ const PostForVolunteer = () => {
             id="title"
             value={formData.title}
             onChange={handleInputChange}
-            className="w-full px-4 py-2 text-black border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#41B3A2]"
+            className="w-full px-4 py-2 text-black border border-gray-300 rounded-2xl focus:outline-none focus:ring focus:ring-[#41B3A2]"
             placeholder="Enter post title"
             required
           />
@@ -160,7 +172,7 @@ const PostForVolunteer = () => {
             id="description"
             value={formData.description}
             onChange={handleInputChange}
-            className="w-full px-4 py-2 text-black border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#41B3A2]"
+            className="w-full px-4 py-2 text-black border border-gray-300 rounded-2xl focus:outline-none focus:ring focus:ring-[#41B3A2]"
             placeholder="Enter post description"
             rows="4"
             required
@@ -180,7 +192,7 @@ const PostForVolunteer = () => {
             id="category"
             value={formData.category}
             onChange={handleInputChange}
-            className="w-full px-4 py-2 text-black border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#41B3A2]"
+            className="w-full px-4 py-2 text-black border border-gray-300 rounded-2xl focus:outline-none focus:ring focus:ring-[#41B3A2]"
             required
           >
             <option value="">Select a category</option>
@@ -205,7 +217,7 @@ const PostForVolunteer = () => {
             id="location"
             value={formData.location}
             onChange={handleInputChange}
-            className="w-full px-4 py-2 text-black border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#41B3A2]"
+            className="w-full px-4 py-2 text-black border border-gray-300 rounded-2xl focus:outline-none focus:ring focus:ring-[#41B3A2]"
             placeholder="Enter location"
             required
           />
@@ -225,7 +237,7 @@ const PostForVolunteer = () => {
             id="volunteersNeeded"
             value={formData.volunteersNeeded}
             onChange={handleInputChange}
-            className="w-full px-4 py-2 text-black border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#41B3A2]"
+            className="w-full px-4 py-2 text-black border border-gray-300 rounded-2xl focus:outline-none focus:ring focus:ring-[#41B3A2]"
             placeholder="Enter number of volunteers"
             required
           />
@@ -249,7 +261,7 @@ const PostForVolunteer = () => {
                 deadline: new Date(e.target.value),
               }))
             }
-            className="w-full px-4 py-2 text-black border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-[#41B3A2]"
+            className="w-full px-4 py-2 text-black border border-gray-300 rounded-2xl focus:outline-none focus:ring focus:ring-[#41B3A2]"
             required
           />
         </div>
@@ -267,7 +279,7 @@ const PostForVolunteer = () => {
             name="organizerName"
             value={formData.organizerName}
             readOnly
-            className="w-full px-4 py-2 text-black bg-gray-100 border border-gray-300 rounded-md focus:outline-none cursor-not-allowed"
+            className="w-full px-4 py-2 text-black bg-gray-100 border border-gray-300 rounded-2xl focus:outline-none cursor-not-allowed"
           />
         </div>
 
@@ -284,7 +296,7 @@ const PostForVolunteer = () => {
             name="organizerEmail"
             value={formData.organizerEmail}
             readOnly
-            className="w-full px-4 py-2 text-black bg-gray-100 border border-gray-300 rounded-md focus:outline-none cursor-not-allowed"
+            className="w-full px-4 py-2 text-black bg-gray-100 border border-gray-300 rounded-2xl focus:outline-none cursor-not-allowed"
           />
         </div>
 
@@ -292,7 +304,7 @@ const PostForVolunteer = () => {
         <div className="md:col-span-2 text-center">
           <button
             type="submit"
-            className="w-full py-3 bg-[#41B3A2] text-white font-semibold rounded-md hover:bg-[#0D7C66] transition-colors duration-300"
+            className="w-full py-3 bg-[#41B3A2] text-white font-semibold rounded-2xl hover:bg-[#0D7C66] transition-colors duration-300"
           >
             Submit
           </button>
@@ -304,3 +316,15 @@ const PostForVolunteer = () => {
 };
 
 export default PostForVolunteer;
+
+
+
+
+
+
+
+
+
+
+
+

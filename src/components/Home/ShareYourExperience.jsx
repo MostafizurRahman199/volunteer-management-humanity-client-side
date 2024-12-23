@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { useFirebaseAuth } from "../../hooks/useAuth";
 import Swal from "sweetalert2";
@@ -7,11 +7,17 @@ import { div } from "motion/react-client";
 import { useDarkMode } from "../../Context/DarkModeContext";
 import reviewNew from "../../../public/reviewNew.json"
 import Lottie from "lottie-react";
+import Aos from 'aos';
 
 const ShakeYourWorkExperience = () => {
   const { user } = useFirebaseAuth();
   const { postWorkExperience } = ApiComponent(); 
   const {darkMode} = useDarkMode();
+
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+}, []);
+
 
   const [formData, setFormData] = useState({
     title: "",
@@ -75,7 +81,7 @@ const ShakeYourWorkExperience = () => {
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
         {/* Left Side: Form */}
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-2">
+        <form  data-aos="zoom-in-right" onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-2">
           
         <div>
             <label className="block text-sm font-medium text-[#0D7C66]">
