@@ -334,9 +334,9 @@ const getAppliedRequests = async (postIds) => {
 // };
 
 
-const updateRequestStatus = async (id, status) => {
+const updateRequestStatus = async (id,postId, status) => {
   try {
-    const data = {id, status}
+    const data = {id,postId, status}
     const response = await api.post('/update-request-status', data);
       return response.data; // Return response data
   } catch (error) {
