@@ -17,10 +17,13 @@ export default function AnimationBanner() {
   return (
     <div className="h-[550px] md:h-[500px] bg-[#e8f1f2] py-4">
       <Carousel className="h-full">
-        {/* Slide 1 */}
-        <div className="relative h-full w-full flex flex-col md:flex  md:flex-row md:px-4">
-          <div className="flex-1  flex flex-col justify-center items-center w-11/12 mx-auto h-full gap-10">
-            <motion.h1
+      
+      
+
+{/* Slide 4 */}
+<div className="relative h-full w-full flex flex-col md:flex md:flex-row justify-between md:px-4">
+  <div className="flex-1 flex flex-col justify-center items-center w-11/12 mx-auto h-full gap-10">
+           <motion.h1
                 animate={{ y:[ 0, -20, 0 ]}}
                 // initial={{ y: -50 }}
                 transition={{
@@ -29,17 +32,106 @@ export default function AnimationBanner() {
                     ease: "easeOut",
                     repeat:Infinity
                 }}
-                className="text-4xl md:text-6xl text-center  font-bold text-[#006494]"
+                className="text-4xl md:text-6xl text-center  font-bold text-[#0D7C66]"
                 >
-                Latest{" "}
+                We are{" "}
                 <motion.span
-                    animate={{ color: ["#006494", "#1b98e0", "#006494"] }}
+                    animate={{ color: ["#0D7C66", "#41B3A2", "#0D7C66"] }}
                     transition={{ duration: 3, repeat: Infinity }} // Increased duration to 3 seconds
                 >
-                    Job
-                for You.!
+                    for Humanity
+                    {/* <motion.img
+                       src="https://outsidein.org.uk/wp-content/uploads/2023/07/HUMANITY-3.png"
+                       className="ml-8"/> */}
+             
                 </motion.span>{" "}
              </motion.h1>
+
+    <motion.p
+      animate={{ opacity: [0.9, 1, 0.9] }}
+      transition={{
+        duration: 5,
+        ease: "easeInOut",
+        repeat: Infinity,
+      }}
+      className="text-center text-lg md:text-2xl text-[#065F46]"
+    >
+      "Join us in building stronger communities through acts of service and compassion."
+    </motion.p>
+  </div>
+   
+
+  <div className="flex-1 relative ">
+    {/* <motion.div
+      animate={{ rotate: [0, 5, 0] }}
+      transition={{
+        duration: 6,
+        ease: "easeInOut",
+        repeat: Infinity,
+      }}
+      className="relative rounded-full overflow-hidden border-l-8 border-t-8 border-[#10B981] mx-auto w-52 h-52 md:w-64 md:h-64"
+    >
+      <img
+        src={banner12}
+        alt="Slide 4 Main Image"
+        className="w-full h-full object-cover"
+      />
+    </motion.div> */}
+    <div className="flex justify-center items-center  h-full w-full">
+    <motion.div
+      animate={{ rotate: [0, 5, 0] }}
+      transition={{
+        duration: 6,
+        ease: "easeInOut",
+        repeat: Infinity,
+      }}
+      className="relative  rounded-tl-[50%] rounded-br-[50%] overflow-hidden border-r-8 border-b-8 border-[#10B981] w-56 h-56 md:w-96 md:h-96 "
+    >
+      <img
+        src="https://familypromisecarteret.org/wp-content/uploads/2015/03/url-14.jpeg"
+        alt="Slide 4 Main Image"
+        className="w-full h-full object-cover"
+      />
+    </motion.div>
+    </div>
+    
+
+
+
+
+  </div>
+</div>
+
+
+        {/* Slide 1 */}
+        <div className="relative h-full w-full flex flex-col md:flex  md:flex-row md:px-4">
+          <div className="flex-1  flex flex-col justify-center items-center w-11/12 mx-auto h-full gap-10">
+           
+          <motion.h1
+      animate={{ y: [0, -10, 0] }}
+      transition={{
+        duration: 4,
+        ease: "easeInOut",
+        repeat: Infinity,
+      }}
+      className="text-4xl md:text-6xl text-center font-bold text-[#065F46]"
+    >
+      Together,{" "}
+      <motion.span
+        animate={{
+          color: ["#065F46", "#10B981", "#065F46"],
+        }}
+        transition={{
+          duration: 4,
+          repeat: Infinity,
+        }}
+        className="inline-block"
+      >
+        We Grow
+      </motion.span>
+    </motion.h1>
+              
+                
 
 
             <motion.p
@@ -50,9 +142,9 @@ export default function AnimationBanner() {
                 stiffness: 100,
                 delay: 0.2,
               }}
-              className="text-center text-lg md:text-2xl text-[#006494]"
+              className="text-center text-lg md:text-2xl text-[#0D7C66]"
             >
-              "Explore exciting career opportunities tailored just for you. Discover your next step towards success today!"
+              "Join hands with us to create a brighter future. Volunteer and inspire change."
             </motion.p>
           </div>
           <div className="flex-1 relative">
@@ -60,77 +152,96 @@ export default function AnimationBanner() {
   
             <div className="flex justify-center items-start h-full w-full">
             <motion.img
-                src={bannerImageTeam}
+                src="https://beyondphilosophy.b-cdn.net/wp-content/uploads/2016/07/Accueil-Where-and-How-Does-Humanity-Impact-Customer-Experience-Michael-Lowenstein-Featured-Image.jpg"
+                // src="https://outsidein.org.uk/wp-content/uploads/2023/07/HUMANITY-3.png"
                 animate={{ y: [0, 20, 0] }}
                 transition={{ duration: 8, repeat: Infinity }}
                 alt="Slide 1"
-                className="m-2 w-4/6 sm:w-3/6  md:w-6/12 h-auto flex items-center justify-center object-cover object-center rounded-bl-none rounded-[40px] border-l-8 border-b-8 border-[#1b98e0]"
-            />
+                // className="m-2 w-4/6 sm:w-3/6  md:w-6/12 h-auto flex items-center justify-center object-cover object-center rounded-bl-none rounded-[40px] border-l-8 border-b-8 border-[#41B3A2]"
+                // className="m-2 w-4/6 sm:w-3/6  md:w-6/12 h-auto flex items-center justify-center object-cover object-center rounded-2xl border-l-8 border-[#41B3A2]"
+                className="m-2 w-4/6 sm:w-3/6  md:w-6/12 h-auto flex items-center justify-center object-cover object-center rounded-[40px] border-l-8 border-t-8 border-[#41B3A2]"
+                />
             </div>
             <motion.img
-              src="https://img.freepik.com/premium-photo/computer-office-collaboration-night-team-programming-erp-software-cybersecurity-system-programmer-code-app-data-science-ai-developer-diversity-teamwork-coding-cloud-computing-database_590464-157309.jpg"
+              src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?fit=fillmax&fm=jpg&ixid=MnwzNTY3MHwwfDF8YWxsfHx8fHx8fHx8MTYxNzE2MjY3Mw&ixlib=rb-1.2.1&q=75"
               animate={{x:[0, 20, 0]}}
               transition={{duration: 8, repeat:Infinity}}
               alt="Slide 1"
-              className=" absolute top-36 left-16 md:top-52 md:left-44 lg:top-52 lg:left-60 m-2 w-4/6 sm:w-3/6 md:w-6/12 mx-auto  object-cover object-center rounded-tr-none rounded-[40px] border-t-8 
-              border-r-8
-              border-[#1b98e0]"
+              className=" absolute top-36 left-16 md:top-52 md:left-44 lg:top-52 lg:left-60 m-2 w-4/6 sm:w-3/6 md:w-6/12 mx-auto  object-cover object-center   rounded-[40px] border-r-8 border-b-8
+              border-[#41B3A2]"
+              // className=" absolute top-36 left-16 md:top-52 md:left-44 lg:top-52 lg:left-60 m-2 w-4/6 sm:w-3/6 md:w-6/12 mx-auto  object-cover object-center rounded-tr-none rounded-[40px] border-t-8 
+              // border-r-8
+              // border-[#41B3A2]"
             />
          
           </div>
         </div>
 
-        {/* Slide 2 */}
-        <div className="relative h-full w-full flex">
-          <div className="flex-1 bg-[#ecedf2] flex flex-col justify-center items-center w-11/12 mx-auto h-full">
-            <motion.h1
-              animate={{ y: 0 }}
-              initial={{ y: -50 }}
-              transition={{
-                type: "spring",
-                stiffness: 100,
-                duration: 0.3,
-                ease: "easeOut",
-              }}
-              className="text-4xl md:text-6xl font-bold text-[#1967d2]"
-            >
-              This is Demo Text
-            </motion.h1>
-          </div>
-          <div className="flex-1">
-            <img
-              src={banner14}
-              alt="Slide 2"
-              className="h-full w-full object-cover object-center"
-            />
-          </div>
-        </div>
+    
 
-        {/* Slide 3 */}
-        <div className="relative h-full w-full flex">
-          <div className="flex-1 bg-[#ecedf2] flex flex-col justify-center items-center w-11/12 mx-auto h-full">
-            <motion.h1
-              animate={{ y: 0 }}
-              initial={{ y: -50 }}
-              transition={{
-                type: "spring",
-                stiffness: 100,
-                duration: 0.3,
-                ease: "easeOut",
-              }}
-              className="text-4xl md:text-6xl font-bold text-[#1967d2]"
-            >
-              Another Demo Text
-            </motion.h1>
-          </div>
-          <div className="flex-1">
-            <img
-              src={banner13}
-              alt="Slide 3"
-              className="h-full w-full object-cover object-center"
-            />
-          </div>
-        </div>
+
+
+
+
+
+
+{/* //slide 2 */}
+<div className=" relative h-full w-full flex flex-col md:flex md:flex-row md:px-4">
+    <div className="flex-1 relative flex flex-col justify-center items-center w-11/12 mx-auto h-full gap-10">
+        <motion.h1
+          animate={{ y: [0, -20, 0] }}
+          transition={{
+            duration: 5,
+            ease: "easeOut",
+            repeat: Infinity,
+          }}
+          className="text-4xl md:text-6xl text-center font-bold text-[#1E40AF]"
+        >
+          Be the{" "}
+          <motion.span
+            animate={{ color: ["#1E40AF", "#2563EB", "#1E40AF"] }}
+            transition={{ duration: 3, repeat: Infinity }}
+          >
+            Change
+          </motion.span>
+        </motion.h1>
+        <motion.p
+          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 20 }}
+          transition={{
+            type: "spring",
+            stiffness: 100,
+            delay: 0.2,
+          }}
+          className="text-center text-lg md:text-2xl text-[#1E40AF]"
+        >
+          "Your actions can make a difference. Volunteer today and bring hope to those in need."
+        </motion.p>
+      </div>
+
+    <div className="flex-1 relative">
+      <div className="flex justify-center ">
+      <motion.img
+          src="https://www.stjohnsunited.org/wp-content/uploads/Help-Others-Cover-Image.jpg"
+          animate={{ y: [0, 20, 0] }}
+          transition={{ duration: 8, repeat: Infinity }}
+          alt="Slide 2"
+          className="m-2 w-5/6 sm:w-3/6 md:w-11/12 h-auto flex items-center justify-center object-cover object-center rounded-t-[40px] rounded-r-[40px]  border-b-8 border-l-8 border-[#2563EB]"
+        />
+      </div>
+        <motion.img
+          src="https://agebrilliantly.org/wp-content/uploads/2024/02/Volunteer-scaled.jpg"
+          animate={{ x: [0, 20, 0] }}
+          transition={{ duration: 8, repeat: Infinity }}
+          alt="Slide 2"
+          className="absolute top-36 left-16 md:top-52 md:left-44 lg:top-52 lg:left-60 m-2 w-4/6 sm:w-3/6 md:w-6/12 object-cover object-center  rounded-t-[40px] rounded-r-[40px]  border-b-8 border-l-8 border-[#2563EB]"
+        />
+      </div>
+</div>
+
+ 
+
+
       </Carousel>
     </div>
   );

@@ -47,7 +47,7 @@ const AllPostForVolunteer = () => {
       return new Date(b.deadline) - new Date(a.deadline);
     });
 
-  if (isLoading) return <Loading></Loading>;
+  if (isLoading) return <Loading height={'screen'}></Loading>;
   if (isError) return <ErrorPage></ErrorPage>;
 
   return (

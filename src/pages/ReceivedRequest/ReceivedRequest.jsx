@@ -63,7 +63,7 @@ const ReceivedRequest = () => {
     });
   };
 
-  if (loadingPosts || loadingRequests) return <div><Loading></Loading></div>;
+  if (loadingPosts || loadingRequests) return <div><Loading height={"screen"}></Loading></div>;
 
 
   return (

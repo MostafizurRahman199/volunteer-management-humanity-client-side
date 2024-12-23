@@ -6,6 +6,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import ApiComponent from "../../API/ApiComponent";
+import Loading from "../Loading/Loading";
+import ErrorPage from "../Error.jsx/ErrorPage";
 
 export const Gallery = () => {
   const { getWorkExperience } = ApiComponent(); // API call function
@@ -16,8 +18,8 @@ export const Gallery = () => {
     queryFn: () => getWorkExperience(),
   });
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Something went wrong!</div>;
+  if (isLoading) return <Loading></Loading>;
+  if (isError) return <ErrorPage></ErrorPage>;
 
   // Sort work experiences by `createdAt` in ascending order
   const sortedWorkExperiences = workExperiences?.sort(
