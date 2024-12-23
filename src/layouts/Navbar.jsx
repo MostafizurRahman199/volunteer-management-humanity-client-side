@@ -3,24 +3,22 @@ import React, { useEffect } from 'react'
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 // import { useFirebaseAuth } from '../Auth/AuthProvider';
 import { FaHome,  FaUser, FaUserPlus, FaSignInAlt, } from 'react-icons/fa';
-import { toast } from 'react-toastify';
-import logo from '../assets/logoNav.png'
-import { Tooltip, Button } from "@material-tailwind/react";
+
 import { MdAddBox } from 'react-icons/md';
 import { VscOpenPreview } from 'react-icons/vsc';
-import { IoGameControllerOutline } from 'react-icons/io5';
+
 import DarkModeToggle from '../components/Home/DarkModeToggle';
-import gamerLogo from "../assets/gamer3.png"
+
 import { Tooltip as ReactTooltip } from 'react-tooltip';
-import { VscGitStashApply } from "react-icons/vsc";
+
 import 'react-tooltip/dist/react-tooltip.css';
-import JobLogo from "../assets/job_logo.png";
-import { BsFillFileEarmarkPostFill } from "react-icons/bs";
+
 import { FiSave } from "react-icons/fi";
 import { useFirebaseAuth } from '../hooks/useAuth';
 import { useDarkMode } from '../Context/DarkModeContext';
 import { RiUserReceivedLine } from "react-icons/ri";
 import { FaRegSave } from "react-icons/fa";
+import humanityLogo from "../../public/humanity.png";
 
 const Navbar = () => {
 
@@ -196,17 +194,15 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-16">
        
           <div className="flex flex-shrink-0 items-center  gap-1 sm:gap-4">
-            <Link to="/" className="flex items-end  space-x-1">
-              <span className="font_header text-3xl sm:text-3xl md:text-xl lg:text-3xl text-md font-bold bg-gradient-to-r from-[#41b3a2] to-[#151515] bg-clip-text text-transparent truncate">
-              Job 
-              </span>
+            <Link to="/" className="flex items-center  space-x-1">
+             
               <img
-                className="block md:hidden lg:block h-12  w-12 sm:h-10 mb-2"
-                src={JobLogo}
+                className="block md:hidden lg:block h-12  w-12 sm:h-10"
+                src={humanityLogo}
                 alt="Logo"
               />
               <span className="font_header text-3xl sm:text-3xl md:text-xl lg:text-3xl text-md font-bold bg-gradient-to-r from-[#41b3a2] to-[#151515] bg-clip-text text-transparent truncate">
-              Seeker
+              Humanity
               </span>
             </Link>
 
@@ -299,19 +295,7 @@ const Navbar = () => {
       </ul>
     </div>
 
-
-           
-
-            
-              
-              <Link to="/saveJob" className={getLinkStyle('/saveJob')} onClick={() => setActiveLink('/saveJob')}>
-                {/* <IoGameControllerOutline className="lg:inline-block mr-1" />Saved Job */}
-                <FiSave className="lg:inline-block mr-1" />Saved Job
-              </Link>
-
-
-
-          
+     
             <a
             data-tooltip-id="my-tooltip"
             data-tooltip-content="Change Mode"
@@ -323,10 +307,6 @@ const Navbar = () => {
           <ReactTooltip id="my-tooltip">This is a tooltip</ReactTooltip>
 
           </div>
-
-
-
-
 
 
 

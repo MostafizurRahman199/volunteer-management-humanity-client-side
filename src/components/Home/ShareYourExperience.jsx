@@ -77,7 +77,7 @@ const ShakeYourWorkExperience = () => {
     <div className={`w-full  ${darkMode == true ? "bg-[#1A3636]" : "bg-[#BDE8CA]"}`}>
       <div className="w-10/12 mx-auto py-10 p-6">
       <h2 className="text-3xl md:text-4xl font-bold text-[#41B3A2] text-center my-8">
-        Shake Your Work Experience
+        Share Your Work Experience
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
         {/* Left Side: Form */}
