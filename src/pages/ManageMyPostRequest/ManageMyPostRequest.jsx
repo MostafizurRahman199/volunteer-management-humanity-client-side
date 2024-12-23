@@ -3,6 +3,7 @@ import MyVolunteerNeedPost from "../MyVolunteerNeedPost/MyVolunteerNeedPost";
 import MyVolunteerRequest from "../MyVolunteerRequest/MyVolunteerRequest";
 import { useDarkMode } from "../../Context/DarkModeContext";
 import { FaTh, FaList } from "react-icons/fa";
+import { FaPaperPlane } from "react-icons/fa"; // Import the icon
 
 const ManageMyPostRequest = () => {
   const { darkMode } = useDarkMode();
@@ -59,7 +60,7 @@ const ManageMyPostRequest = () => {
         {/* My Request Tab */}
         <button
           onClick={() => setActiveTab("request")}
-          className={`px-6 py-2 text-sm md:text-xl font-bold rounded-t-lg ${
+          className={`px-2 md:px-6 py-2 text-sm md:text-xl font-bold rounded-t-lg flex flex-col sm:flex sm:flex-row gap-2 items-center ${
             activeTab === "request"
               ? "bg-[#41B3A2] text-white"
               : darkMode
@@ -67,7 +68,7 @@ const ManageMyPostRequest = () => {
               : "text-[#0d7c66] border-b-2 border-transparent hover:border-[#0d7c66]"
           }`}
         >
-          My Volunteer Request
+          My Sent Request <FaPaperPlane className="" /> 
         </button>
       </div>
 

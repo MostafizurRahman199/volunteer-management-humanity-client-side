@@ -38,8 +38,8 @@ const ForgotPassword = () => {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 sm:shadow-lg shadow-[#A91D3A] p-8 rounded-2xl" data-aos="fade-up">
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-[#A91D3A]">
+      <div className="max-w-md w-full space-y-8 sm:shadow-lg shadow-[#41b3a2] p-8 rounded-2xl" data-aos="fade-up">
+        <h2 className="mt-6 text-center text-3xl font-extrabold text-[#41b3a2]">
           Reset Password
         </h2>
         <form className="mt-8 space-y-6" onSubmit={handleResetPassword}>
@@ -48,7 +48,7 @@ const ForgotPassword = () => {
               <input
                 type="email"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-[#A91D3A] focus:border-[#A91D3A] focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-[#41b3a2] focus:border-[#41b3a2] focus:z-10 sm:text-sm"
                 placeholder="Email address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -59,14 +59,14 @@ const ForgotPassword = () => {
             <button
               onClick={handleResetPassword}
             //   type="submit"
-              className="group relative w-full flex justify-center border border-transparent text-sm bg-[#A91D3A] hover:bg-[#151515] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#A91D3A] px-8 py-3 rounded-md text-white font-bold transition-transform hover:scale-105 shadow-2xl"
+              className="group relative w-full flex justify-center border border-transparent text-sm bg-[#41b3a2] hover:bg-[#151515] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#41b3a2] px-8 py-3 rounded-md text-white font-bold transition-transform hover:scale-105 shadow-2xl"
             >
               Reset Password
             </button>
             <button
               onClick={() => navigate('/login')}
             //   type="submit"
-              className="group relative w-full flex justify-center border border-transparent text-sm bg-[#A91D3A] hover:bg-[#151515] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#A91D3A] px-8 py-3 rounded-md text-white font-bold transition-transform hover:scale-105 shadow-2xl"
+              className="group relative w-full flex justify-center border border-transparent text-sm bg-[#41b3a2] hover:bg-[#151515] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#41b3a2] px-8 py-3 rounded-md text-white font-bold transition-transform hover:scale-105 shadow-2xl"
             >
               Back to Login
             </button>

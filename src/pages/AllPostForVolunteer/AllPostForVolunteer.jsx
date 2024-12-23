@@ -3,6 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 import ApiComponent from "../../API/ApiComponent";
 import { useDarkMode } from "../../Context/DarkModeContext";
+import Loading from "../../components/Loading/Loading";
+import ErrorPage from "../../components/Error.jsx/ErrorPage";
 
 const AllPostForVolunteer = () => {
   const { darkMode } = useDarkMode();
@@ -37,8 +39,8 @@ const AllPostForVolunteer = () => {
       return new Date(b.deadline) - new Date(a.deadline);
     });
 
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Something went wrong. Please try again later.</div>;
+  if (isLoading) return <Loading></Loading>;
+  if (isError) return <ErrorPage></ErrorPage>;
 
   return (
     <div

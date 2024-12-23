@@ -22,7 +22,7 @@ const MyVolunteerRequest = ({viewFormat}) => {
     queryFn: () => getVolunteerRequestsByEmail(email),
   });
 
-// console.log(requests);
+console.log(requests);
 
   // Mutation for canceling a volunteer request
   const cancelRequestMutation = useMutation({
@@ -76,16 +76,22 @@ const MyVolunteerRequest = ({viewFormat}) => {
             requests.map((request) => (
               <div
                 key={request._id}
-                className="bg-[#BDE8CA] p-4 rounded-lg shadow-lg"
+                className="p-4 rounded-lg shadow-lg"
               >
                 <img
                   src={request.thumbnail}
                   alt={request.postTitle}
                   className="w-full h-40 object-cover rounded-md mb-4"
                 />
-                <h3 className="text-lg font-bold text-[#0D7C66] mb-2">
+                <div className="flex  items-center gap-2">
+                <p className="text-lg font-bold text-[#0D7C66] mb-2">
                   {request.postTitle}
-                </h3>
+                </p>
+                <p className={`${request.status == 'requested' && "bg-yellow-500 text-black"} 
+                ${request.status == 'accepted' && "bg-green-500 text-white"} 
+                ${request.status == 'rejected' && "bg-red-500 text-white"} 
+                py-1 px-2 rounded-2xl text-sm`}>{request.status}</p>
+                </div>
                 <p className="text-sm mb-2">
                   <strong>Category:</strong> {request.category}
                 </p>
@@ -122,6 +128,7 @@ const MyVolunteerRequest = ({viewFormat}) => {
                 <th className="text-[#41B3A2]">Category</th>
                 <th className="text-[#41B3A2]">Location</th>
                 <th className="text-[#41B3A2]">Deadline</th>
+                <th className="text-[#41B3A2]">Status</th>
                 <th className="text-[#41B3A2]">Actions</th>
               </tr>
             </thead>
@@ -133,6 +140,10 @@ const MyVolunteerRequest = ({viewFormat}) => {
                     <td>{request.category}</td>
                     <td>{request.location}</td>
                     <td>{new Date(request.deadline).toDateString()}</td>
+                    <td> <p className={`${request.status == 'requested' && "bg-yellow-600 text-white"} 
+                ${request.status == 'accepted' && "bg-green-500 text-white"} 
+                ${request.status == 'rejected' && "bg-red-500 text-white"} 
+                py-1 px-2 rounded-md text-sm w-fit`}>{request.status}</p></td>
                     <td className="flex space-x-2">
                       <button
                         className="btn btn-sm bg-red-500 text-white"

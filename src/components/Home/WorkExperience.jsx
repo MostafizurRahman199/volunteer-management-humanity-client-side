@@ -3,6 +3,8 @@ import React from "react";
 import ReactCardCarousel from "react-card-carousel";
 import ApiComponent from "../../API/ApiComponent";
 import { useQuery } from "@tanstack/react-query";
+import Loading from "../Loading/Loading";
+import ErrorPage from "../Error.jsx/ErrorPage";
 
 const WorkExperience = () => {
 
@@ -15,8 +17,8 @@ const WorkExperience = () => {
       queryFn: () => getWorkExperience(),
     });
   
-    if (isLoading) return <div>Loading...</div>;
-    if (isError) return <div>Something went wrong. Please try again later.</div>;
+    if (isLoading) return <Loading></Loading>;
+    if (isError) return <ErrorPage></ErrorPage>;
   
 
   const CARD_STYLE = {
@@ -55,7 +57,7 @@ const WorkExperience = () => {
                 {item.title}
               </h3>
               <p className="text-sm md:text-base text-start mt-2">
-                {item.description.slice(0, 80)}..
+                {item.description.length >=80 ? item.description.slice(0, 80)+".." : item.description}
               </p>
 
               <div className="mt-4 flex flex-col md:flex md:flex-row items-center justify-start w-full gap-4">

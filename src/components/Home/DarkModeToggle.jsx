@@ -7,12 +7,13 @@ import { useDarkMode } from '../../Context/DarkModeContext';
 
 const DarkModeToggle = () => {
   const { darkMode, setDarkMode } = useDarkMode();
+
   // console.log(darkMode);
 
   return (
     <div>
       <button onClick={() => setDarkMode(!darkMode)}>
-        {darkMode ? <FiSun className="text-black text-2xl" /> : <FaRegMoon className="text-black text-xl" />}
+        {darkMode ? <FiSun className={`text-white  text-2xl`} /> : <FaRegMoon className={`text-black text-xl`} />}
       </button>
     </div>
   );

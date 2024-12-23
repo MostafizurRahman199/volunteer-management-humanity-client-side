@@ -5,6 +5,8 @@ import Swal from "sweetalert2";
 import ApiComponent from "../../API/ApiComponent";
 import { div } from "motion/react-client";
 import { useDarkMode } from "../../Context/DarkModeContext";
+import reviewNew from "../../../public/reviewNew.json"
+import Lottie from "lottie-react";
 
 const ShakeYourWorkExperience = () => {
   const { user } = useFirebaseAuth();
@@ -71,9 +73,26 @@ const ShakeYourWorkExperience = () => {
       <h2 className="text-3xl md:text-4xl font-bold text-[#41B3A2] text-center my-8">
         Shake Your Work Experience
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2  gap-6">
         {/* Left Side: Form */}
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-2">
+          
+        <div>
+            <label className="block text-sm font-medium text-[#0D7C66]">
+              Name
+            </label>
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              readOnly={!!user}
+              onChange={handleInputChange}
+              className={`input input-bordered w-full text-black rounded-2xl ${
+                user ? "bg-gray-200 cursor-not-allowed" : ""
+              }`}
+              required
+            />
+          </div>
           <div>
             <label className="block text-sm font-medium text-[#0D7C66]">
               Title
@@ -83,11 +102,13 @@ const ShakeYourWorkExperience = () => {
               name="title"
               value={formData.title}
               onChange={handleInputChange}
-              className="input input-bordered w-full text-black"
+              className="input input-bordered w-full text-black rounded-2xl"
               required
             />
           </div>
-          <div>
+         
+          
+          <div className="md:col-span-2">
             <label className="block text-sm font-medium text-[#0D7C66]">
               Description
             </label>
@@ -95,7 +116,7 @@ const ShakeYourWorkExperience = () => {
               name="description"
               value={formData.description}
               onChange={handleInputChange}
-              className="textarea textarea-bordered w-full text-black"
+              className="textarea textarea-bordered w-full text-black rounded-2xl"
               required
             ></textarea>
           </div>
@@ -108,7 +129,7 @@ const ShakeYourWorkExperience = () => {
               name="profession"
               value={formData.profession}
               onChange={handleInputChange}
-              className="input input-bordered w-full text-black"
+              className="input input-bordered w-full text-black rounded-2xl"
               placeholder="Enter your profession"
               required
             />
@@ -122,7 +143,7 @@ const ShakeYourWorkExperience = () => {
               name="yourImageURL"
               value={formData.yourImageURL}
               onChange={handleInputChange}
-              className="input input-bordered w-full text-black"
+              className="input input-bordered w-full text-black rounded-2xl"
               placeholder="Enter your image URL"
               required
             />
@@ -136,39 +157,26 @@ const ShakeYourWorkExperience = () => {
               name="workingImageURL"
               value={formData.workingImageURL}
               onChange={handleInputChange}
-              className="input input-bordered w-full text-black"
+              className="input input-bordered w-full text-black rounded-2xl"
               placeholder="Enter a working image URL"
               required
             />
           </div>
-          <div>
-            <label className="block text-sm font-medium text-[#0D7C66]">
-              Name
-            </label>
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              readOnly={!!user}
-              onChange={handleInputChange}
-              className={`input input-bordered w-full text-black ${
-                user ? "bg-gray-200 cursor-not-allowed" : ""
-              }`}
-              required
-            />
-          </div>
+          
        
-          <button
+         <div className="flex items-center">
+         <button
             type="submit"
             className="btn w-full bg-[#41B3A2] hover:bg-[#0D7C66] text-white"
           >
             Share Experience
           </button>
+         </div>
         </form>
 
         {/* Right Side: Image Preview */}
         <div className="flex flex-col items-center justify-center">
-         <img src="https://cdn-ilbainl.nitrocdn.com/RGRFeudsEgjJNPnjwDSLLujQmhGAtVEx/assets/images/optimized/rev-88fda57/updeed.co/wp-content/uploads/2021/11/Be-the-First-to-Offer-Help-1024x576.jpg" alt="" />
+          <Lottie animationData={reviewNew} loop={true} />
         </div>
       </div>
     </div>
