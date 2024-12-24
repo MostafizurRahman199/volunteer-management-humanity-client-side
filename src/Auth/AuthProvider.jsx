@@ -39,6 +39,9 @@ const AuthProvider = ({children}) => {
     
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [postLength, setPostLength] = useState(0);
+    const [receivedRequest, setReceivedRequest] = useState(0);
+    const [sentRequest, setSentRequest] = useState(0);
 
 
     const {
@@ -260,7 +263,15 @@ const AuthProvider = ({children}) => {
         logOut,  
         resetPassword,  
         setUser,
-        updateUserProfile
+        updateUserProfile,
+
+        sentRequest, 
+        setSentRequest,
+        receivedRequest, 
+        setReceivedRequest,
+        postLength, 
+        setPostLength,
+
     }
 
     return (

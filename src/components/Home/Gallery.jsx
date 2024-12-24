@@ -28,7 +28,7 @@ export const Gallery = () => {
 
   return (
     <motion.div
-      className="w-10/12 mx-auto my-8"
+      className="w-10/12 mx-auto my-8 px-2"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8 }}
@@ -44,19 +44,19 @@ export const Gallery = () => {
         {sortedWorkExperiences?.map(({ workingImageURL, title, createdAt }, index) => (
           <motion.div
             key={index}
-            className="relative overflow-hidden group bg-white rounded-lg shadow-lg"
+            className="relative overflow-hidden group bg-white  shadow-xl"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
             <img
-              className="h-40 w-full max-w-full rounded-t-lg object-cover object-center transform transition-transform duration-500 group-hover:scale-110"
+              className="h-40 w-full max-w-full  object-cover object-center transform transition-transform duration-500 group-hover:scale-110"
               src={workingImageURL}
               alt={title}
             />
             <div className="p-4">
               <h3 className="text-lg font-bold text-[#0D7C66] mb-1">{title}</h3>
               <p className="text-sm text-gray-500">
-                <strong>Created At:</strong> {new Date(createdAt).toLocaleDateString()}
+                 {new Date(createdAt).toLocaleDateString()}
               </p>
             </div>
           </motion.div>

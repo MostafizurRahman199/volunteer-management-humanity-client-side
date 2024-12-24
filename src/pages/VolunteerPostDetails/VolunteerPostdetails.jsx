@@ -113,13 +113,13 @@ const handleOneModalCondition = () => {
   };
   
 
-  if (isLoading) return <Loading></Loading>;
+  if (isLoading) return <Loading height="screen"></Loading>;
   if (isError) return <ErrorPage></ErrorPage>;
 
   return (
 
     <div
-      className={`p-6 max-w-4xl mx-auto rounded-lg shadow-lg my-10${
+      className={`p-6 max-w-4xl min-h-screen mx-auto rounded-lg shadow-lg my-10${
         darkMode ? "bg-[#0D7C66] text-white" : " text-gray-800"
       }`}
     >

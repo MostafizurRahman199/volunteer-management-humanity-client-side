@@ -6,6 +6,8 @@ import { toast } from 'react-toastify';
 import Aos from 'aos';
 import updateProfileBg from '../assets/updateProfile.png';
 import { useFirebaseAuth } from '../hooks/useAuth';
+import updateAnimation from "../../public/update.json"
+import Lottie from 'lottie-react';
 
 const UpdateProfile = () => {
     const { user, setUser , updateUserProfile} = useFirebaseAuth();
@@ -46,7 +48,7 @@ const UpdateProfile = () => {
 
     return (
         <div className="min-h-screen  pt-20 px-4 flex justify-center items-start">
-        <div className='bg-[#151515]  p-2 sm:p-4 rounded-2xl shadow-2xl' data-aos='zoom-in-left'>
+        <div className=' p-2 sm:p-4 rounded-2xl shadow-2xl' data-aos='zoom-in-left'>
         <div className="max-w-4xl w-full  shadow-2xl shadow-[#41b3a2]  rounded-2xl  p-8 flex items-center justify-center gap-2" data-aos='zoom-in-left'>
                 <div className="flex-1">
                     <h2 className="font_header text-2xl sm:text-4xl font-bold mb-4 text-white ">Update Profile</h2>
@@ -78,7 +80,10 @@ const UpdateProfile = () => {
                     </form>
                 </div>
                 <div className="flex-1 hidden md:block">
-                    <img src={updateProfileBg} alt="Profile Update" className="w-full h-full object-cover rounded-r-lg" />
+                <Lottie
+                animationData={updateAnimation}
+                // style={style1}
+                />
                 </div>
             </div>
         </div>

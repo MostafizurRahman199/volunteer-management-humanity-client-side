@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useFirebaseAuth } from "../../hooks/useAuth";
 import Swal from "sweetalert2";
 import ApiComponent from "../../API/ApiComponent";
@@ -29,7 +29,7 @@ const ShakeYourWorkExperience = () => {
     email: user?.email || "",
     createdAt: new Date().toISOString(),
   });
-
+  const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: (data) => postWorkExperience(data),
     onSuccess: () => {
@@ -40,6 +40,9 @@ const ShakeYourWorkExperience = () => {
         showConfirmButton: false,
         timer: 1500,
       });
+
+      queryClient.invalidateQueries(["workExperiences"]);
+ 
 
       // Reset form
       setFormData({
@@ -62,6 +65,10 @@ const ShakeYourWorkExperience = () => {
     },
   });
 
+
+
+  
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -71,7 +78,10 @@ const ShakeYourWorkExperience = () => {
     e.preventDefault();
     console.log(formData);  
     mutation.mutate(formData);
+ 
   };
+
+
 
   return (
     <div className={`w-full  ${darkMode == true ? "bg-[#1A3636]" : "bg-[#BDE8CA]"}`}>

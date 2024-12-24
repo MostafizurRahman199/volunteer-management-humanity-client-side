@@ -21,6 +21,7 @@ const MyVolunteerNeedPost = ({viewFormat}) => {
  
   useEffect(() => {
     Aos.init({ duration: 1000 });
+    setPostLength(posts?.length)
 }, []);
 
 //   const [viewFormat, setViewFormat] = useState("card"); // "card" or "table"
