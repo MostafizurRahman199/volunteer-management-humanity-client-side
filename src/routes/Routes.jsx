@@ -20,6 +20,7 @@ import VolunteerPostdetails from "../pages/VolunteerPostDetails/VolunteerPostdet
 import MyVolunteerNeedPost from "../pages/MyVolunteerNeedPost/MyVolunteerNeedPost";
 import ManageMyPostRequest from "../pages/ManageMyPostRequest/ManageMyPostRequest";
 import ReceivedRequest from "../pages/ReceivedRequest/ReceivedRequest";
+import MySavedPost from "../pages/MySavedPost/MySavedPost";
 
 
 
@@ -82,10 +83,23 @@ const router = createBrowserRouter([
                 element: (
                     <>
                         <Helmet>
-                            <title>Humanity - Add Job</title>
+                            <title>Humanity - Add Post</title>
                         </Helmet>
                         <PrivateRoute>
                           <PostForVolunteer></PostForVolunteer>
+                        </PrivateRoute>
+                    </>
+                ),
+            },
+            {
+                path: "/my-saved-post",
+                element: (
+                    <>
+                        <Helmet>
+                            <title>Humanity - Saved Post</title>
+                        </Helmet>
+                        <PrivateRoute>
+                          <MySavedPost></MySavedPost>
                         </PrivateRoute>
                     </>
                 ),

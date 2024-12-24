@@ -110,7 +110,7 @@ console.log(requests);
                 </p>
                 <div className="flex justify-between mt-4">
                   <button
-                    className="btn btn-sm bg-red-500 text-white"
+                    className="btn btn-sm bg-red-500 hover:bg-red-800 text-white"
                     onClick={() => handleCancel(request)}
                   >
                     Cancel
@@ -154,7 +154,7 @@ console.log(requests);
                 py-1 px-2 rounded-md text-sm w-fit`}>{request.status}</p></td>
                     <td className="flex space-x-2">
                       <button
-                        className="btn btn-sm bg-red-500 text-white"
+                        className="btn btn-sm bg-red-500 hover:bg-red-800 text-white"
                         onClick={() => handleCancel(request)}
                       >
                         Cancel

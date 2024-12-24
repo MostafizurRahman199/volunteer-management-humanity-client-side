@@ -128,7 +128,7 @@ const postVolunteerNeed = async (data) => {
 };
 
 
-const getVolunteerPosts = async (email) => {
+const getVolunteerPosts = async () => {
   try {
     const response = await api.get(`/all-post-volunteer`);
     return handleResponse(response);
@@ -136,6 +136,15 @@ const getVolunteerPosts = async (email) => {
     handleError(error);
   }
 };
+
+
+
+
+
+
+
+
+
 
 
 
@@ -347,6 +356,43 @@ const updateRequestStatus = async (id,postId, status) => {
 
 
 
+// detail post page
+const saveVolunteerPost = async (saveData) => {
+  try {
+    const response = await api.post(`/save-post`, saveData);
+    return response.data; // Return response data
+  } catch (error) {
+    console.error("Error saving the volunteer post:", error.message);
+    throw new Error(
+      error.response?.data?.message || "Failed to save the volunteer post."
+    );
+  }
+};
+
+const checkSavedStatus = async (postId, email) => {
+  try {
+    const response = await api.get(`/check-saved/${postId}/${email}`);
+    return response.data; // Return response data
+  } catch (error) {
+    console.error("Error fetching saved status:", error.message);
+    throw new Error(
+      error.response?.data?.message || "Failed to fetch saved status."
+    );
+  }
+};
+
+
+// saved post page
+const getSavedPosts = async (email) => {
+  const response = await api.get(`/saved-posts/${email}`);
+  return response.data;
+};
+
+const deleteSavedPost = async (postId, email) => {
+  const response = await api.delete(`/saved-posts/${postId}/${email}`);
+  return response.data;
+};
+
 
 
   // Return the methods and logic for usage in components
@@ -381,6 +427,13 @@ const updateRequestStatus = async (id,postId, status) => {
     getOrganizerPosts,
     getAppliedRequests,
     updateRequestStatus,
+
+
+    saveVolunteerPost,
+    checkSavedStatus,
+
+    deleteSavedPost,
+    getSavedPosts,
   
   };
 };

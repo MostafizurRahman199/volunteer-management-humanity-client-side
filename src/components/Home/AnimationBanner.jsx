@@ -195,11 +195,11 @@ export default function AnimationBanner() {
             ease: "easeOut",
             repeat: Infinity,
           }}
-          className="text-4xl md:text-6xl text-center font-bold text-[#1E40AF]"
+          className="text-4xl md:text-6xl text-center font-bold text-[#0D7C66]"
         >
           Be the{" "}
           <motion.span
-            animate={{ color: ["#1E40AF", "#2563EB", "#1E40AF"] }}
+             animate={{ color: ["#0D7C66", "#41B3A2", "#0D7C66"] }}
             transition={{ duration: 3, repeat: Infinity }}
           >
             Change
@@ -213,7 +213,7 @@ export default function AnimationBanner() {
             stiffness: 100,
             delay: 0.2,
           }}
-          className="text-center text-lg md:text-2xl text-[#1E40AF]"
+          className="text-center text-lg md:text-2xl text-[#0D7C66]"
         >
           "Your actions can make a difference. Volunteer today and bring hope to those in need."
         </motion.p>
@@ -226,7 +226,7 @@ export default function AnimationBanner() {
           animate={{ y: [0, 20, 0] }}
           transition={{ duration: 8, repeat: Infinity }}
           alt="Slide 2"
-          className="m-2 w-5/6 sm:w-3/6 md:w-11/12 h-auto flex items-center justify-center object-cover object-center rounded-t-[40px] rounded-r-[40px]  border-b-8 border-l-8 border-[#2563EB]"
+          className="m-2 w-5/6 sm:w-3/6 md:w-11/12 h-auto flex items-center justify-center object-cover object-center rounded-t-[40px] rounded-r-[40px]  border-b-8 border-l-8 border-[#41B3A2]"
         />
       </div>
         <motion.img
@@ -234,7 +234,7 @@ export default function AnimationBanner() {
           animate={{ x: [0, 20, 0] }}
           transition={{ duration: 8, repeat: Infinity }}
           alt="Slide 2"
-          className="absolute top-36 left-16 md:top-52 md:left-44 lg:top-52 lg:left-60 m-2 w-4/6 sm:w-3/6 md:w-6/12 object-cover object-center  rounded-t-[40px] rounded-r-[40px]  border-b-8 border-l-8 border-[#2563EB]"
+          className="absolute top-36 left-16 md:top-52 md:left-44 lg:top-52 lg:left-60 m-2 w-4/6 sm:w-3/6 md:w-6/12 object-cover object-center  rounded-t-[40px] rounded-r-[40px]  border-b-8 border-l-8 border-[#41B3A2]"
         />
       </div>
 </div>

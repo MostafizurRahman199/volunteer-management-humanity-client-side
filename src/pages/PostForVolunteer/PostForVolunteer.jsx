@@ -43,7 +43,7 @@ const PostForVolunteer = () => {
         showConfirmButton: false,
         timer: 1500,
       });
-      navigate("/");
+    //   navigate("/");
       setFormData({
         thumbnail: "",
         title: "",

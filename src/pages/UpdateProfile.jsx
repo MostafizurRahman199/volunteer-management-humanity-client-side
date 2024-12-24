@@ -73,7 +73,7 @@ const UpdateProfile = () => {
                         </div>
                         <button
                             type="submit"
-                            className="bg-[#41b3a2] hover:bg-[#9c1631] px-4 py-2 sm:px-8 sm:py-3 rounded-3xl text-white sm:font-semibold transition-transform hover:scale-105 shadow-2xl"
+                            className="bg-[#41b3a2] hover:bg-[#0D7C66] px-4 py-2 sm:px-8 sm:py-3 rounded-3xl text-white sm:font-semibold transition-transform hover:scale-105 shadow-2xl"
                         >
                             Update Information
                         </button>

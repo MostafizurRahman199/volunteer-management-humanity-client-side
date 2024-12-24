@@ -68,12 +68,12 @@ const ReceivedRequest = () => {
 
   return (
     <div className="p-6 w-full md:w-10/12 mx-auto min-h-screen">
-      <h2 className="text-3xl font-bold text-center text-[#0D7C66] mb-6">
+      <h2 className="text-3xl md:text-4xl font-bold text-[#41B3A2] text-center my-8">
         Received Requests
       </h2>
 
       {/* View Switch */}
-      <div className="flex justify-end items-center mb-6">
+      <div className="flex justify-end items-center mb-6 gap-2">
         <button
           className={`btn btn-sm ${
             viewFormat === "card" ? "bg-[#41B3A2] text-white" : "btn-outline text-[#41B3A2]"
@@ -102,7 +102,7 @@ const ReceivedRequest = () => {
           {filteredRequests?.map((request) => (
             <div
               key={request._id}
-              className="bg-white shadow-lg rounded-lg overflow-hidden border p-4"
+              className="bg-white shadow-lg rounded-lg overflow-hidden border p-4 hover:scale-105 transition-all duration-300"
             >
               <img
                 src={request.thumbnail}
@@ -118,7 +118,7 @@ const ReceivedRequest = () => {
               <p className="text-sm text-gray-600 mb-4">
                 <strong>Status:</strong> {request.status}
               </p>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-wrap item-center justify-center  gap-2">
                 <button
                   className="btn btn-sm bg-[#41B3A2] hover:bg-[#2a7267] text-white"
                   onClick={() => handleUpdateStatus(request._id, request.postId, "accepted")}

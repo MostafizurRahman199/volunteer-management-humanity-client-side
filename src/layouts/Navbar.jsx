@@ -153,7 +153,7 @@ const Navbar = () => {
     // const [imageUrl, setImageUrl] = React.useState(null);
 
     const imageUrl = !imageError ? getProfileImage(user) : 'https://cdn-icons-png.flaticon.com/512/3135/3135715.png';
-    console.log(imageUrl);
+    // console.log(imageUrl);
 
 
 
@@ -164,7 +164,7 @@ const Navbar = () => {
     // }, [user]);
 
     // setImageUrl(user?.photoURL);
-    console.log(imageUrl);
+    // console.log(imageUrl);
 
     return (
 
@@ -290,6 +290,14 @@ const Navbar = () => {
             className={getLinkStyle("/received-request")}
           >
             Received Request
+          </Link>
+        </li>
+        <li className="my-1">
+          <Link
+            to="/my-saved-post"
+            className={getLinkStyle("/my-saved-post")}
+          >
+            Saved Post
           </Link>
         </li>
       </ul>

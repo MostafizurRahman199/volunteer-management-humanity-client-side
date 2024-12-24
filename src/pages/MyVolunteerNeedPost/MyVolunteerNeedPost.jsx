@@ -21,7 +21,7 @@ const MyVolunteerNeedPost = ({viewFormat}) => {
  
   useEffect(() => {
     Aos.init({ duration: 1000 });
-    setPostLength(posts?.length)
+   
 }, []);
 
 //   const [viewFormat, setViewFormat] = useState("card"); // "card" or "table"
@@ -366,12 +366,12 @@ const MyVolunteerNeedPost = ({viewFormat}) => {
 
     {/* Modal Actions */}
     <div className="modal-action flex justify-end space-x-4">
-      <button type="submit" className="btn bg-[#41B3A2] text-white">
+      <button type="submit" className="btn bg-[#41B3A2] text-white hover:bg-[#0D7C66]">
         Update
       </button>
       <button
         type="button"
-        className="btn btn-outline text-[#0D7C66] border-[#0D7C66]"
+        className="btn btn-outline text-[#0D7C66] border-[#0D7C66] hover:bg-[#f44336] hover:text-white border-2 hover:border-white"
         onClick={() => document.getElementById("update_modal").close()}
       >
         Close

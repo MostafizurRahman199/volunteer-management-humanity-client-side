@@ -14,7 +14,7 @@ const ManageMyPostRequest = () => {
     <div className="w-full px-2 md:w-10/12 mx-auto min-h-screen my-10">
       {/* View Switch */}
 
-      <h2 className="text-xl md:text-4xl text-center text-[#41B3A2] my-4">Manage Your Post/Request</h2>
+      <h2 className="text-3xl md:text-4xl font-bold text-[#41B3A2] text-center my-8">Manage Your Post/Request</h2>
       <div className="flex justify-end items-center mb-6">
         <div className="flex space-x-4">
           <button

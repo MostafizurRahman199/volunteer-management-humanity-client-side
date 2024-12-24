@@ -1,5 +1,5 @@
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { useDarkMode } from "../../Context/DarkModeContext";
 import { useFirebaseAuth } from "../../hooks/useAuth";
@@ -11,7 +11,9 @@ import { IoTimeOutline } from "react-icons/io5";
 import { FaTag, FaMapMarkerAlt, FaUsers, FaCalendarAlt, FaUserTie } from "react-icons/fa";
 import Loading from "../../components/Loading/Loading";
 import ErrorPage from "../../components/Error.jsx/ErrorPage";
-
+import Aos from "aos";
+import { FaRegBookmark } from "react-icons/fa6";
+import {  FaBookmark } from "react-icons/fa6";
 const VolunteerPostDetails = () => {
 
 
@@ -19,7 +21,17 @@ const VolunteerPostDetails = () => {
   const { user } = useFirebaseAuth();
   const { id } = useParams();
   const queryClient = useQueryClient();
-  const { getVolunteerPostById, postApplyVolunteer, decreaseVolunteerNeed } = ApiComponent();
+  const [isSaved, setIsSaved] = useState(false);
+ 
+  const { 
+    
+    getVolunteerPostById, 
+    postApplyVolunteer, 
+    decreaseVolunteerNeed ,
+    saveVolunteerPost,
+    checkSavedStatus,
+
+  } = ApiComponent();
 
   const [suggestion, setSuggestion] = useState("");
 
@@ -56,7 +68,9 @@ const VolunteerPostDetails = () => {
   });
   
 
-
+  useEffect(() => {
+    Aos.init({ duration: 1000 });
+  }, []);
 
 
 const decreaseVolunteerMutation = useMutation({
@@ -77,15 +91,69 @@ const decreaseVolunteerMutation = useMutation({
 const handleOneModalCondition = () => {
     if (postDetails.volunteersNeeded == 0) {
         Swal.fire({
-            icon: "error",
-            title: "Request Failed!",
-            text: "No volunteers needed for this post.",
+            icon: "warning",
+            title: "Sorry , No Vacancy",
+            text: "Volunteers fulfilled for this post.",
             confirmButtonText: "Okay",
             });
     } else {
         document.getElementById("volunteer_modal").showModal();
     }
 };
+
+
+
+//___________________saved post code start
+
+  // Fetch saved status
+  useEffect(() => {
+    const fetchSavedStatus = async () => {
+      if (user?.email) {
+        try {
+          const savedStatus = await checkSavedStatus(id, user.email);
+          setIsSaved(savedStatus.saved);
+          console.log(savedStatus.data);
+        } catch (error) {
+          console.error("Error fetching saved status:", error.message);
+        }
+      }
+    };
+    fetchSavedStatus();
+  }, [id, user]);
+
+  // Mutation to toggle saved status
+  const savePostMutation = useMutation({
+    mutationFn: async () =>
+      saveVolunteerPost({
+        thumbnail: postDetails.thumbnail,
+        postTitle: postDetails.title,
+        postId: id,
+        email: user.email,
+      }),
+    onSuccess: () => {
+      setIsSaved(true);
+      Swal.fire({
+        icon: "success",
+        title: "Post Saved Successfully!",
+        timer: 1500,
+        showConfirmButton: false,
+      });
+    },
+    onError: (error) => {
+      console.error("Error saving post:", error.message);
+      Swal.fire({
+        icon: "error",
+        title: "Failed to Save Post",
+        text: error.message,
+      });
+    },
+  });
+
+  const handleSavePost = () => {
+    savePostMutation.mutate();
+  };
+
+
 
   const handleRequest = () => {
     const requestData = {
@@ -122,9 +190,36 @@ const handleOneModalCondition = () => {
       className={`p-6 max-w-4xl min-h-screen mx-auto rounded-lg shadow-lg my-10${
         darkMode ? "bg-[#0D7C66] text-white" : " text-gray-800"
       }`}
+
+       data-aos="zoom-in"
     >
       {/* Title */}
-      <h2 className="text-3xl font-bold mb-6 text-[#41B3A2]">{postDetails.title}</h2>
+    
+
+      <div className="flex justify-between items-center mb-6">
+        <h1 className="text-3xl font-bold text-[#41b3a2]">{postDetails.title}</h1>
+
+        {
+          isSaved ==true ? ( <button
+            className={`btn flex items-center bg-[#41b3a2] hover:scale-105 hover:bg-[#0D7C66] text-white`}
+            onClick={handleSavePost}
+            disabled={isSaved}
+          > <FaRegBookmark className="mr-1" /> Saved
+          </button> ) 
+          :
+           ( <button
+            className={`btn flex items-center bg-[#0D7C66] hover:scale-105   hover:bg-[#0D7C66] text-white`}
+            onClick={handleSavePost}
+            disabled={isSaved}
+          >
+           <FaRegBookmark className="mr-1" /> Save
+          </button>)
+        }
+       
+      </div>
+      
+      
+     
     
       {/* Thumbnail */}
       <img
@@ -338,3 +433,5 @@ const handleOneModalCondition = () => {
 };
 
 export default VolunteerPostDetails;
+
+
