@@ -35,7 +35,7 @@ const router = createBrowserRouter([
                 element: (
                     <>
                         <Helmet>
-                            <title>Job Seeker - Home</title>
+                            <title>Humanity - Home</title>
                         </Helmet>
                         <Home />
                     </>
@@ -47,37 +47,15 @@ const router = createBrowserRouter([
                 element: (
                     <>
                         <Helmet>
-                            <title>Job Seeker - Register</title>
+                            <title>Humanity - Register</title>
                         </Helmet>
                         <Register />
                     </>
                 ),
             },
            
-            {
-                path: "/",
-                element: (
-                    <>
-                        <Helmet>
-                            <title>Job Seeker - All Reviews</title>
-                        </Helmet>
-                      
-                    </>
-                ),
-               
-            },
-            {
-                path: "",
-                element: (
-                    <>
-                        <Helmet>
-                            <title>Job Seeker - Review Details</title>
-                        </Helmet>
-                        
-                    </>
-                ),
-               
-            },
+           
+          
             {
                 path: "/post-for-volunteer",
                 element: (
@@ -157,46 +135,8 @@ const router = createBrowserRouter([
                 ),
             },
            
-            {
-                path: "/something/:id",
-                element: (
-                    <>
-                        <Helmet>
-                            <title>Job Seeker - Apply Job</title>
-                        </Helmet>
-                        <PrivateRoute>
-                          {/* component call */}
-                        </PrivateRoute>
-                    </>
-                ),
-            },
-            
-            {
-                path: "/",
-                element: (
-                    <>
-                        <Helmet>
-                            <title>Job Seeker - My Review</title>
-                        </Helmet>
-                        <PrivateRoute>
-                           {/* write a component  */}
-                        </PrivateRoute>
-                    </>
-                ),
-            },
-            {
-                path: "/",
-                element: (
-                    <>
-                        <Helmet>
-                            <title>Job Seeker - Game WatchList</title>
-                        </Helmet>
-                        <PrivateRoute>
-                            {/* write a component  */}
-                        </PrivateRoute>
-                    </>
-                ),
-            },
+           
+           
            
          
             {
@@ -204,29 +144,19 @@ const router = createBrowserRouter([
                 element: (
                     <>
                         <Helmet>
-                            <title>Job Seeker - Login</title>
+                            <title>Humanity - Login</title>
                         </Helmet>
                         <Login />
                     </>
                 ),
             },
-            {
-                path: "/something",
-                element: (
-                    <>
-                        <Helmet>
-                            <title>Job Seeker - All Job</title>
-                        </Helmet>
-                       
-                    </>
-                ),
-            },
+           
             {
                 path: "/forgot-password",
                 element: (
                     <>
                         <Helmet>
-                            <title>Job Seeker - Forgot Password</title>
+                            <title>Humanity - Forgot Password</title>
                         </Helmet>
                         <ForgetPassword />
                     </>
@@ -237,7 +167,7 @@ const router = createBrowserRouter([
                 element: (
                     <>
                         <Helmet>
-                            <title>Job Seeker - My Profile</title>
+                            <title>Humanity - My Profile</title>
                         </Helmet>
                         <PrivateRoute>
                             <Profile />
@@ -253,7 +183,7 @@ const router = createBrowserRouter([
                 element: (
                     <>
                         <Helmet>
-                            <title>Job Seeker - Update Profile</title>
+                            <title>Humanity - Update Profile</title>
                         </Helmet>
                         <PrivateRoute>
                             <UpdateProfile />
@@ -270,7 +200,7 @@ const router = createBrowserRouter([
         element: (
             <>
                 <Helmet>
-                    <title>Job Seeker - Error</title>
+                    <title>Humanity - Error</title>
                 </Helmet>
                 <ErrorPage />
             </>

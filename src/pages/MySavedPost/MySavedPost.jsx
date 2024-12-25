@@ -289,7 +289,7 @@ const MySavedPost = () => {
     });
   };
 
-  if (isLoading) return <Loading />;
+  if (isLoading) return <Loading height="screen" />;
   if (isError) return <ErrorPage />;
 
   return (
@@ -320,7 +320,7 @@ const MySavedPost = () => {
               <div className="flex flex-col justify-between p-4 w-full">
                 <div>
                   <h3 className="text-lg font-semibold mb-2 text-[#41B3A2]">
-                    {post.postTitle}
+                    {post.postTitle.slice(0,18)}..
                   </h3>
                 </div>
               </div>

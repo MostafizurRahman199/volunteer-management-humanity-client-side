@@ -473,10 +473,10 @@ const Navbar = () => {
           </Link>
            
            <Link 
-            to="/saveJob" 
-            className={`block ${getLinkStyle('/saveJob')}`}
+            to="/my-saved-post" 
+            className={`block ${getLinkStyle('/my-saved-post')}`}
             onClick={() => {
-              setActiveLink('/saveJob');
+              setActiveLink('/my-saved-post');
               setIsMobileMenuOpen(false);
             }}
           >
