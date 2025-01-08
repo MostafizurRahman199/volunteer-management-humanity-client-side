@@ -187,7 +187,7 @@ The following dependencies are used for development purposes:
 
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/your-username/chill-gamer.git](https://github.com/MostafizurRahman199/volunteer-management-humanity-client-side.git)
+   git clone [https://github.com/MostafizurRahman199/volunteer-management-humanity-client-side.git]
    cd volunteer-management-humanity-client-side
 
 
