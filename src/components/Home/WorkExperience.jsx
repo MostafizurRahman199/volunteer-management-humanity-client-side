@@ -5,11 +5,13 @@ import ApiComponent from "../../API/ApiComponent";
 import { useQuery } from "@tanstack/react-query";
 import Loading from "../Loading/Loading";
 import ErrorPage from "../Error.jsx/ErrorPage";
+import { useDarkMode } from "../../Context/DarkModeContext";
 
 const WorkExperience = () => {
 
 
     const { getWorkExperience } = ApiComponent(); // API call function
+    const { darkMode } = useDarkMode();
 
     // Fetch Work Experience Data
     const { data: workExperiences, isLoading, isError } = useQuery({
@@ -50,7 +52,7 @@ const WorkExperience = () => {
           <div className="p-1 md:p-2 rounded-lg bg-[#41B3A2]">
             <div
               key={index}
-              className="flex flex-col  justify-around h-[400px] md:h-[300px] w-full  mx-auto md:max-w-[600px] p-5 text-center bg-white text-[#0D7C66] text-base rounded-3xl shadow-2xl "
+              className={`flex flex-col  justify-around h-[400px] md:h-[300px] w-full  mx-auto md:max-w-[600px] p-5 text-center  ${darkMode ? "text-[#41b3a2] bg-[#151414]" : "bg-white text-[#0D7C66]"}  text-base rounded-3xl shadow-2xl `}
             >
               {/* Title and Description */}
               <h3 className="text-lg md:text-xl font-semibold text-start">
@@ -68,7 +70,7 @@ const WorkExperience = () => {
                 />
                 <div className="mt-2 text-center">
                   <p className="font-bold text-base md:text-lg">{item.name}</p>
-                  <p className="text-sm text-gray-800">{item.profession}</p>
+                  <p className="text-sm ">{item.profession}</p>
                 </div>
               </div>
               {/* Image and User Info */}

@@ -70,8 +70,9 @@ const Navbar = () => {
 
 
     const getLinkStyle = (path) => `
-    relative px-2 py-2 text-sm font-bold  font_header transition-colors duration-200
+    relative px-2 py-2 text-sm font-bold   font_header transition-colors duration-200
     ${activeLink === path ? 'text-[#41b3a2]' : `${darkMode == true ? "text-white" : "text-black"} hover:text-[#41b3a2]`}
+
     before:absolute before:bottom-0 before:left-0 before:w-full before:h-0.5 
     before:bg-[#41b3a2] before:transform before:scale-x-0 before:transition-transform
     before:duration-300 hover:before:scale-x-100
@@ -196,7 +197,7 @@ const Navbar = () => {
                 src={humanityLogo}
                 alt="Logo"
               />
-              <span className="font_header text-3xl sm:text-3xl md:text-xl lg:text-3xl text-md font-bold bg-gradient-to-r from-[#41b3a2] to-[#151515] bg-clip-text text-transparent truncate">
+              <span className={`font_header text-3xl sm:text-3xl md:text-xl lg:text-3xl text-md font-bold bg-gradient-to-r ${darkMode == true ? "from-[#41b3a2] to-white" : "from-[#41b3a2] to-[#151515]"}  bg-clip-text text-transparent truncate`}>
               Humanity
               </span>
             </Link>
@@ -253,7 +254,7 @@ const Navbar = () => {
         tabIndex={0}
         role="button"
         className={`px-4 py-2 cursor-pointer ${
-          isProfileActive ? `text-[#41b3a2] border-b-[3px] border-[#41b3a2]` : ` hover:text-[#41b3a2]  ${darkMode == true ? "text-white" : "text-black"}`
+          isProfileActive ? `text-[#41b3a2]  border-b-[3px] border-[#41b3a2]` : ` hover:text-[#41b3a2]  ${darkMode == true ? "text-white" : "text-black"}`
         }`}
         onClick={() => setActiveLink("/my-profile")}
       >
@@ -261,12 +262,12 @@ const Navbar = () => {
       </div>
       <ul
         tabIndex={0}
-        className={`dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow ${darkMode == true ? "text-white bg-black" : "text-black bg-white"}`}
+        className={`dropdown-content       rounded-box z-[1] w-52 p-2 shadow ${darkMode == true ? "text-white bg-black flex flex-col gap-1 p-2" : "text-black bg-white menu"}`}
       >
         <li className="my-1 ">
           <Link
             to="/post-for-volunteer"
-            className={getLinkStyle("/post-for-volunteer")}
+            className={`${getLinkStyle("/post-for-volunteer")} rounded-none `}
           >
             Add Volunteer Need Post
           </Link>
@@ -274,7 +275,7 @@ const Navbar = () => {
         <li className="my-1">
           <Link
             to="/ManageMyPostRequest"
-            className={getLinkStyle("/ManageMyPostRequest")}
+            className={`${getLinkStyle("/ManageMyPostRequest")} rounded-none`}
           >
             Manage My Posts
           </Link>
@@ -282,7 +283,7 @@ const Navbar = () => {
         <li className="my-1">
           <Link
             to="/received-request"
-            className={getLinkStyle("/received-request")}
+            className={`${getLinkStyle("/received-request")} rounded-none`}
           >
             Received Request
           </Link>
@@ -290,7 +291,7 @@ const Navbar = () => {
         <li className="my-1">
           <Link
             to="/my-saved-post"
-            className={getLinkStyle("/my-saved-post")}
+            className={`${getLinkStyle("/my-saved-post")} rounded-none`}
           >
             Saved Post
           </Link>
@@ -335,7 +336,7 @@ const Navbar = () => {
 
 
       <div className="dropdown dropdown-hover dropdown-end">
-        <div tabIndex={0} role="button" className=" btn-circle"> 
+        <div tabIndex={0} role="button" className=" btn-circle mt-4"> 
           <ProfileImage user={user} />
           </div>
         <ul tabIndex={0} className={`dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow ${darkMode == true ? "text-white bg-black" : "text-black bg-white"}`}>

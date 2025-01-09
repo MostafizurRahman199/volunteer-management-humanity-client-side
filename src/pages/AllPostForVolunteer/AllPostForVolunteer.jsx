@@ -154,7 +154,7 @@ const AllPostForVolunteer = () => {
   if (isError) return <ErrorPage />;
 
   return (
-    <div className={`p-6 max-w-6xl mx-auto min-h-screen`}>
+    <div className={`p-6 w-10/12 mx-auto min-h-screen`}>
       <h1 className="text-3xl md:text-4xl font-bold text-[#41B3A2] text-center my-8">
       Volunteer Need Posts
       </h1>
@@ -227,7 +227,7 @@ const AllPostForVolunteer = () => {
 
 <div>
   {viewFormat === "card" ? (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div className="grid grid-cols-1  md:grid-cols-3  gap-6">
       {paginatedPosts?.map((post) => (
         <div key={post._id} data-aos="fade-up">
           <div

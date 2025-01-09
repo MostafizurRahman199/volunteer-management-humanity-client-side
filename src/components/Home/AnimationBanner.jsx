@@ -8,14 +8,18 @@ import banner13 from "../../assets/banner4.jpeg";
 import banner14 from "../../assets/banner5.jpeg";
 import banner15 from "../../assets/banner6.jpeg";
 import bannerImageTeam from '../../assets/bannerImageTeam.jpg';
+import { useDarkMode } from "../../Context/DarkModeContext";
 
 export default function AnimationBanner() {
+
+  const { darkMode } = useDarkMode();
+
   useEffect(() => {
     Aos.init({ duration: 1000 });
   }, []);
 
   return (
-    <div className="h-[550px] md:h-[500px] bg-[#e8f1f2] py-4">
+    <div className={`h-[550px] md:h-[500px]  py-4 ${darkMode == true ? "bg-[#1a3636]" : "bg-[#e8f1f2]"}`}>
       <Carousel className="h-full">
       
       
@@ -54,7 +58,7 @@ export default function AnimationBanner() {
         ease: "easeInOut",
         repeat: Infinity,
       }}
-      className="text-center text-lg md:text-2xl text-[#065F46]"
+      className={`text-center text-lg md:text-2xl text-[#065F46] ${darkMode == true ? "text-[#41b3a2]" : "text-[#065F46]"}`}
     >
       "Join us in building stronger communities through acts of service and compassion."
     </motion.p>
@@ -114,7 +118,7 @@ export default function AnimationBanner() {
         ease: "easeInOut",
         repeat: Infinity,
       }}
-      className="text-4xl md:text-6xl text-center font-bold text-[#065F46]"
+      className="text-4xl md:text-6xl text-center font-bold text-[#0d7c66]"
     >
       Together,{" "}
       <motion.span
@@ -142,7 +146,7 @@ export default function AnimationBanner() {
                 stiffness: 100,
                 delay: 0.2,
               }}
-              className="text-center text-lg md:text-2xl text-[#0D7C66]"
+              className={`text-center text-lg md:text-2xl text-[#065F46] ${darkMode == true ? "text-[#41b3a2]" : "text-[#065F46]"}`}
             >
               "Join hands with us to create a brighter future. Volunteer and inspire change."
             </motion.p>
@@ -195,7 +199,7 @@ export default function AnimationBanner() {
             ease: "easeOut",
             repeat: Infinity,
           }}
-          className="text-4xl md:text-6xl text-center font-bold text-[#0D7C66]"
+          className="text-4xl md:text-6xl text-center font-bold text-[#0d7c66]"
         >
           Be the{" "}
           <motion.span
@@ -213,7 +217,7 @@ export default function AnimationBanner() {
             stiffness: 100,
             delay: 0.2,
           }}
-          className="text-center text-lg md:text-2xl text-[#0D7C66]"
+          className={`text-center text-lg md:text-2xl text-[#065F46] ${darkMode == true ? "text-[#41b3a2]" : "text-[#065F46]"}`}
         >
           "Your actions can make a difference. Volunteer today and bring hope to those in need."
         </motion.p>
