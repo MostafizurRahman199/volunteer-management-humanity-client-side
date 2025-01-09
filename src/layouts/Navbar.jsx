@@ -189,8 +189,8 @@ const Navbar = () => {
 
 
   return (
-    <nav className={`font_header ${darkMode == true ? "bg-black/20 text-white" : "bg-white text-black"} backdrop-blur-md fixed  shadow-lg w-full top-0 z-50`}>
-      <div className="w-full mx-auto px-2 sm:px-2 lg:px-2">
+    <nav className={`font_header  ${darkMode == true ? "bg-black/20 text-white" : "bg-white text-black"} backdrop-blur-md fixed w-full shadow-lg top-0 z-50 `}>
+      <div className="w-10/12 mx-auto px-2 sm:px-2 lg:px-2">
         <div className="flex justify-between items-center h-16">
        
           <div className="flex flex-shrink-0 items-center  gap-1 sm:gap-4">
