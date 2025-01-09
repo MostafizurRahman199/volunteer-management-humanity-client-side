@@ -8,12 +8,14 @@ import Loading from "../../components/Loading/Loading";
 import ErrorPage from "../../components/Error.jsx/ErrorPage";
 import { data } from "autoprefixer";
 import Aos from 'aos';
+import { useDarkMode } from "../../Context/DarkModeContext";
 
 
 const MyVolunteerRequest = ({viewFormat}) => {
   const { user } = useFirebaseAuth();
   const { email } = user;
   const queryClient = useQueryClient();
+  const { darkMode } = useDarkMode();
   
   const {getVolunteerRequestsByEmail, cancelVolunteerRequest} = ApiComponent();
 
@@ -82,7 +84,7 @@ console.log(requests);
              <div data-aos="flip-up">
                <div
                 key={request._id}
-                className="p-4 rounded-2xl hover:scale-105 transition-all duration-300 shadow-lg"
+                className={`p-4 rounded-2xl hover:scale-105 transition-all duration-300 shadow-lg ${darkMode ? "text-white bg-[#151414]" : "text-gray-800 bg-[#BDE8CA]"}    p-4 rounded-2xl hover:scale-105 transition-all duration-300 shadow-lg`}
               >
                 <img
                   src={request.thumbnail}

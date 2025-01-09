@@ -8,9 +8,11 @@ import Swal from "sweetalert2";
 import ApiComponent from "../../API/ApiComponent";
 import { useFirebaseAuth } from "../../hooks/useAuth";
 import Loading from "../../components/Loading/Loading";
+import { useDarkMode } from "../../Context/DarkModeContext";
 
 const ReceivedRequest = () => {
   const { user } = useFirebaseAuth();
+  const { darkMode } = useDarkMode();
   const { email } = user;
   const queryClient = useQueryClient();
   const { getOrganizerPosts, getAppliedRequests, updateRequestStatus } = ApiComponent();
@@ -102,12 +104,12 @@ const ReceivedRequest = () => {
           {filteredRequests?.map((request) => (
             <div
               key={request._id}
-              className="bg-white shadow-lg rounded-lg overflow-hidden border p-4 hover:scale-105 transition-all duration-300"
+              className={`  ${darkMode ? "text-white bg-[#151414]" : "text-gray-800 bg-white"} shadow-lg rounded-2xl overflow-hidden  p-4 hover:scale-105 transition-all duration-300 `}
             >
               <img
                 src={request.thumbnail}
                 alt={request.postTitle}
-                className="w-full h-40 object-cover rounded-md mb-4"
+                className="w-full h-40 object-cover rounded-lg mb-4"
               />
               <h3 className="text-lg font-bold text-[#0D7C66] mb-2">
                 {request.postTitle}
@@ -152,10 +154,10 @@ const ReceivedRequest = () => {
           <table className="table w-full">
             <thead>
               <tr>
-                <th>Post Title</th>
-                <th>Volunteer</th>
-                <th>Status</th>
-                <th>Actions</th>
+                <th className="text-[#41B3A2]">Post Title</th>
+                <th className="text-[#41B3A2]">Volunteer</th>
+                <th className="text-[#41B3A2]">Status</th>
+                <th className="text-[#41B3A2]">Actions</th>
               </tr>
             </thead>
             <tbody>

@@ -8,12 +8,14 @@ import ApiComponent from "../../API/ApiComponent";
 import Loading from "../../components/Loading/Loading";
 import ErrorPage from "../../components/Error.jsx/ErrorPage";
 import Aos from 'aos';
+import { useDarkMode } from "../../Context/DarkModeContext";
 
 
 
 const MyVolunteerNeedPost = ({viewFormat}) => {
 
   const { user } = useFirebaseAuth();
+  const { darkMode } = useDarkMode();
   const email = user.email;
   const queryClient = useQueryClient();
   const {getVolunteerPostsByEmail,  deletePost, updateVolunteerPost } = ApiComponent();
@@ -133,7 +135,7 @@ const MyVolunteerNeedPost = ({viewFormat}) => {
             <div data-aos="flip-up">
                   <div
                 key={post._id}
-                className="bg-[#BDE8CA] p-4 rounded-2xl hover:scale-105 transition-all duration-300 shadow-lg"
+                className={`${darkMode ? "text-white bg-[#151414]" : "text-gray-800 bg-[#BDE8CA]"}    p-4 rounded-2xl hover:scale-105 transition-all duration-300 shadow-lg`}
               >
                 <img
                   src={post.thumbnail}
@@ -193,13 +195,13 @@ const MyVolunteerNeedPost = ({viewFormat}) => {
                     <td>{post.location}</td>
                     <td className="flex space-x-2">
                       <button
-                        className="btn btn-sm bg-[#41B3A2] text-white"
+                        className="btn btn-sm bg-[#41B3A2] hover:bg-[#16a791] text-white"
                         onClick={() => handleUpdate(post)}
                       >
                         Update
                       </button>
                       <button
-                        className="btn btn-sm bg-red-500 text-white"
+                        className="btn btn-sm bg-red-500 hover:bg-red-800 text-white"
                         onClick={() => handleDelete(post._id)}
                       >
                         Delete
@@ -218,10 +220,12 @@ const MyVolunteerNeedPost = ({viewFormat}) => {
           </table>
         </div>
       )}
- <dialog id="update_modal" className="modal modal-bottom sm:modal-middle">
+
+
+ <dialog id="update_modal" className={`modal modal-bottom sm:modal-middle  `}>
   <form
     onSubmit={handleUpdateSubmit}
-    className="modal-box bg-white rounded-lg p-6"
+    className={`modal-box  rounded-lg p-6 ${darkMode ? "text-white bg-[#1A1A1D]" : "text-gray-800 bg-white"}`}
   >
     <h3 className="font-bold text-xl text-[#0D7C66] mb-4">
       Update Volunteer Need Post
@@ -237,7 +241,7 @@ const MyVolunteerNeedPost = ({viewFormat}) => {
       onChange={(e) =>
         setSelectedPost((prev) => ({ ...prev, thumbnail: e.target.value }))
       }
-      className="input input-bordered w-full mb-4"
+      className="input input-bordered text-black w-full mb-4"
       placeholder="Enter thumbnail URL"
       required
     />
@@ -252,7 +256,7 @@ const MyVolunteerNeedPost = ({viewFormat}) => {
       onChange={(e) =>
         setSelectedPost((prev) => ({ ...prev, title: e.target.value }))
       }
-      className="input input-bordered w-full mb-4"
+      className="input input-bordered text-black w-full mb-4"
       required
     />
 
@@ -265,7 +269,7 @@ const MyVolunteerNeedPost = ({viewFormat}) => {
       onChange={(e) =>
         setSelectedPost((prev) => ({ ...prev, description: e.target.value }))
       }
-      className="textarea textarea-bordered w-full mb-4"
+      className="textarea textarea-bordered w-full mb-4 text-black"
       placeholder="Enter post description"
       required
     ></textarea>
@@ -279,7 +283,7 @@ const MyVolunteerNeedPost = ({viewFormat}) => {
       onChange={(e) =>
         setSelectedPost((prev) => ({ ...prev, category: e.target.value }))
       }
-      className="select select-bordered w-full mb-4"
+      className="select select-bordered w-full mb-4 text-black"
       required
     >
       <option value="">Select a category</option>
@@ -299,7 +303,7 @@ const MyVolunteerNeedPost = ({viewFormat}) => {
       onChange={(e) =>
         setSelectedPost((prev) => ({ ...prev, location: e.target.value }))
       }
-      className="input input-bordered w-full mb-4"
+      className="input input-bordered text-black w-full mb-4"
       placeholder="Enter location"
       required
     />
@@ -317,7 +321,7 @@ const MyVolunteerNeedPost = ({viewFormat}) => {
           volunteersNeeded: Number(e.target.value),
         }))
       }
-      className="input input-bordered w-full mb-4"
+      className="input input-bordered text-black w-full mb-4"
       placeholder="Enter the number of volunteers needed"
       required
     />
@@ -339,7 +343,7 @@ const MyVolunteerNeedPost = ({viewFormat}) => {
       deadline: new Date(e.target.value).toISOString(),
     }))
   }
-  className="input input-bordered w-full mb-4"
+  className="input input-bordered text-black w-full mb-4"
   required
 />
 
@@ -351,7 +355,7 @@ const MyVolunteerNeedPost = ({viewFormat}) => {
       type="text"
       value={selectedPost?.organizerName || ""}
       readOnly
-      className="input input-bordered w-full mb-4 bg-gray-200 cursor-not-allowed"
+      className="input input-bordered text-black w-full mb-4 bg-gray-200 cursor-not-allowed"
     />
 
     <label className="block text-sm font-medium text-[#0D7C66] mb-2">
@@ -361,7 +365,7 @@ const MyVolunteerNeedPost = ({viewFormat}) => {
       type="email"
       value={selectedPost?.organizerEmail || ""}
       readOnly
-      className="input input-bordered w-full mb-4 bg-gray-200 cursor-not-allowed"
+      className="input input-bordered text-black w-full mb-4 bg-gray-200 cursor-not-allowed"
     />
 
     {/* Modal Actions */}

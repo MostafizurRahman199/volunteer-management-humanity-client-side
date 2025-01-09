@@ -232,8 +232,8 @@ const AllPostForVolunteer = () => {
         <div key={post._id} data-aos="fade-up">
           <div
             className={`card rounded-2xl p-4 border-gray-200 
-              shadow-lg overflow-hidden border transform hover:scale-105 transition-transform duration-300
-              ${darkMode ? "text-white bg-[#1A1A1D]" : "text-gray-800 bg-white"}`}
+              shadow-lg overflow-hidden  transform hover:scale-105 transition-transform duration-300
+              ${darkMode ? "text-white bg-[#151414]" : "text-gray-800 bg-white"}`}
           >
             <img
               src={post.thumbnail}
