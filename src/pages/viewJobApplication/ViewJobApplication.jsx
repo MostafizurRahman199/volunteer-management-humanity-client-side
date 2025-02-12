@@ -77,10 +77,12 @@ const ViewJobApplication = () => {
 
   return (
     <div className="w-11/12 max-w-screen-xl min-h-screen mx-auto py-10">
+     
       <div className="flex flex-wrap justify-between items-center gap-4 mb-6">
         <h2 className="text-2xl md:text-3xl font-bold text-gray-800">Job Application Details</h2>
         {/* Display the number of applicants by status */}
-        <div className="text-lg font-semibold text-gray-700 flex flex-wrap gap-2">
+  
+  <div className="text-lg font-semibold text-gray-700 flex flex-wrap gap-2">
   <button
     className="btn bg-gradient-to-r from-green-400 via-green-500 to-green-600 text-white px-6 py-2 rounded-md shadow-md hover:scale-105 hover:shadow-lg transition-all"
     onClick={() => setSelectedStatus("Hired")}
