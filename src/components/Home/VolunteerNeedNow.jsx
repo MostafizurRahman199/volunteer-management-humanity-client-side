@@ -40,26 +40,26 @@ const VolunteerNeedNow = () => {
               className="shadow-lg rounded-2xl overflow-hidden border transform hover:scale-105 transition-transform duration-300"
             >
               <img
-                src={post.thumbnail}
+                src={post?.thumbnail || "https://img.freepik.com/free-vector/people-volunteering-donating-money_53876-66112.jpg"}
                 alt={post.title}
                 className="w-full h-48 object-cover"
               />
               <div className="p-4">
                 <h3 className="text-xl font-semibold text-[#0D7C66] mb-2">
-                  {post.title}
+                  {post?.title.slice(0,25)}
                 </h3>
                 <p className="text-sm ">
                   <strong>Category:</strong> {post.category}
                 </p>
                 <p className="text-sm ">
-                  <strong>Location:</strong> {post.location}
+                  <strong>Location:</strong> {post?.location.slice(0,25)}
                 </p>
                 <p className="text-sm  mb-4">
                   <strong>Deadline:</strong>{" "}
-                  {new Date(post.deadline).toLocaleDateString()}
+                  {new Date(post?.deadline).toLocaleDateString()}
                 </p>
                 <Link
-                  to={`/volunteer-post-details/${post._id}`}
+                  to={`/volunteer-post-details/${post?._id}`}
                   className="inline-block text-center w-full py-2 px-4 bg-[#41B3A2] text-white rounded-2xl hover:bg-[#0D7C66] transition-colors duration-300"
                 >
                   View Details

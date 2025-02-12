@@ -19,6 +19,7 @@ import { useDarkMode } from '../Context/DarkModeContext';
 import { RiUserReceivedLine } from "react-icons/ri";
 import { FaRegSave } from "react-icons/fa";
 import humanityLogo from "../../public/humanity.png";
+import { MdOutlineSupportAgent } from "react-icons/md";
 
 const Navbar = () => {
 
@@ -220,6 +221,11 @@ const Navbar = () => {
 
             <Link to="/all-post-volunteer" className={getLinkStyle('/all-post-volunteer')} onClick={() => setActiveLink('/all-post-volunteer')}>
               <VscOpenPreview className="lg:inline-block mr-1"/> All Post Volunteer
+            </Link>
+
+            <Link to="/support" className={getLinkStyle('/support')} onClick={() => setActiveLink('/support')}>
+              <MdOutlineSupportAgent className="lg:inline-block mr-1" />
+              Support
             </Link>
 
             {/* <Link to="/post-for-volunteer" className={getLinkStyle('/post-for-volunteer')} onClick={() => setActiveLink('/post-for-volunteer')}>
@@ -427,6 +433,20 @@ const Navbar = () => {
             }}
           >
              <VscOpenPreview className="inline-block mr-1" /> All Post
+          </Link>
+
+          <Link 
+            to="/support" 
+            className={`block ${getLinkStyle('/support')}`}
+            onClick={() => {
+              setActiveLink('/support');
+              setIsMobileMenuOpen(false);
+            }}
+          >
+          
+              <MdOutlineSupportAgent className="inline-block mr-1" />
+              Support
+         
           </Link>
 
 

@@ -30,6 +30,9 @@ const ShakeYourWorkExperience = () => {
     createdAt: new Date().toISOString(),
   });
   const queryClient = useQueryClient();
+
+
+  
   const mutation = useMutation({
     mutationFn: (data) => postWorkExperience(data),
     onSuccess: () => {

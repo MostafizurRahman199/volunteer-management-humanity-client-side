@@ -21,6 +21,7 @@ import MyVolunteerNeedPost from "../pages/MyVolunteerNeedPost/MyVolunteerNeedPos
 import ManageMyPostRequest from "../pages/ManageMyPostRequest/ManageMyPostRequest";
 import ReceivedRequest from "../pages/ReceivedRequest/ReceivedRequest";
 import MySavedPost from "../pages/MySavedPost/MySavedPost";
+import Support from "../pages/Support/Support";
 
 
 
@@ -50,6 +51,18 @@ const router = createBrowserRouter([
                             <title>Humanity - Register</title>
                         </Helmet>
                         <Register />
+                    </>
+                ),
+            },
+           
+           {
+                path: "/support",
+                element: (
+                    <>
+                        <Helmet>
+                            <title>Humanity - Support</title>
+                        </Helmet>
+                        <Support />
                     </>
                 ),
             },

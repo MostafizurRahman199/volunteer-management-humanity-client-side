@@ -5,6 +5,7 @@ import axios from "axios";
 
 import useAxiosSecure from "../hooks/useAxiosSecure";
 import { useFirebaseAuth } from "../hooks/useAuth";
+import { config } from "localforage";
 
 
 const ApiComponent = () => {
@@ -369,6 +370,23 @@ const saveVolunteerPost = async (saveData) => {
   }
 };
 
+
+// message 
+// support.jsx
+const MessagePost = async (message) => {
+  try {
+    console.log(message);
+    const response = await api.post("/contact-message", message);
+    // console.log(response);
+    return response.data; // Return response data
+  } catch (error) {
+    console.error("Error saving the volunteer post:", error.message);
+    throw new Error(
+      error.response?.data?.message || "Failed to save the volunteer post."
+    );
+  }
+};
+
 const checkSavedStatus = async (postId, email) => {
   try {
     const response = await api.get(`/check-saved/${postId}/${email}`);
@@ -434,6 +452,8 @@ const deleteSavedPost = async (postId, email) => {
 
     deleteSavedPost,
     getSavedPosts,
+
+    MessagePost,
   
   };
 };

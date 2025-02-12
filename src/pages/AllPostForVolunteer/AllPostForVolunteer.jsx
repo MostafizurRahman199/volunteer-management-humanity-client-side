@@ -240,9 +240,9 @@ const AllPostForVolunteer = () => {
               alt={post.title}
               className="rounded-lg w-full h-48 object-cover mb-4"
             />
-            <h3 className="text-lg font-bold mb-2">{post.title}</h3>
+            <h3 className="text-lg font-bold mb-2">{post.title.slice(0,25)}</h3>
             <p className="text-sm mb-2">
-              <strong>Location:</strong> {post.location}
+              <strong>Location:</strong> {post.location.slice(0,25)}
             </p>
             <p className="text-sm mb-4">
               <strong>Volunteers Needed:</strong> {post.volunteersNeeded}
@@ -283,8 +283,8 @@ const AllPostForVolunteer = () => {
                   className="rounded-lg w-32 h-24 object-cover mx-auto"
                 />
               </td>
-              <td className={`px-4 py-2 border border-gray-200 font-bold  ${darkMode === true ? "text-white" : "text-[#0D7C66]" }`}>{post.title}</td>
-              <td className="px-4 py-2 border border-gray-200 ">{post.location}</td>
+              <td className={`px-4 py-2 border border-gray-200 font-bold  ${darkMode === true ? "text-white" : "text-[#0D7C66]" }`}>{post.title.slice(0,25)}</td>
+              <td className="px-4 py-2 border border-gray-200 ">{post.location.slice(0,25)}</td>
               <td className="px-4 py-2 border border-gray-200 text-center">{post.volunteersNeeded}</td>
               <td className="px-4 py-2 border border-gray-200 text-center">
                 <button
