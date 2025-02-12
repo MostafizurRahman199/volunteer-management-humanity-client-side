@@ -204,7 +204,7 @@ const Login = () => {
             <div className="text-sm">
               <button
                 onClick={handleForgotPassword}
-                className="font-medium text-black hover:text-[#006494]"
+                className="font-medium text-black hover:text-[#41b3a2]"
               >
                 Forgot your password?
               </button>
@@ -214,7 +214,7 @@ const Login = () => {
           <div>
             <button
               type="submit"
-              className="group relative w-full flex justify-center  border border-transparent text-sm  bg-black hover:bg-[#006494] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black px-8 py-3 rounded-3xl text-white font-bold transition-transform hover:scale-105 shadow-2xl"
+              className="group relative w-full flex justify-center  border border-transparent text-sm  bg-black hover:bg-[#41b3a2] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black px-8 py-3 rounded-3xl text-white font-bold transition-transform hover:scale-105 shadow-2xl"
             >
               Login
             </button>
@@ -239,7 +239,7 @@ const Login = () => {
 
         <p className="mt-2 text-center text-sm text-gray-600">
           Don't have an account?{' '}
-          <Link to="/register" className="font-medium text-black hover:text-white">
+          <Link to="/register" className="font-medium text-black hover:text-[#41b3a2]">
             Register here
           </Link>
         </p>

@@ -105,7 +105,7 @@ const Register = () => {
                     </h2>
                 </div>
                 <form className="mt-8 space-y-3" onSubmit={handleSubmit}>
-                    <div className="rounded-md shadow-sm space-y-2">
+                    <div className="rounded-md  space-y-2">
                         <div>
                             <input
                                 type="text"
@@ -162,7 +162,7 @@ const Register = () => {
                     <div>
                         <button
                             type="submit"
-                            className="group relative w-full flex justify-center  border border-transparent text-sm  bg-black hover:bg-[#9c1631]focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black px-8 py-3 rounded-3xl text-white font-bold transition-transform hover:scale-105 shadow-2xl">
+                            className="group relative w-full flex justify-center  border border-transparent text-sm  bg-black hover:bg-[#41b3a2] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black px-8 py-3 rounded-3xl text-white font-bold transition-transform hover:scale-105 shadow-2xl">
                             Register
                         </button>
                     </div>
@@ -189,7 +189,7 @@ const Register = () => {
 
                 <p className="mt-2 text-center text-sm text-gray-600">
                     Already have an account?{' '}
-                    <Link to="/login" className="font-medium text-black hover:text-white">
+                    <Link to="/login" className="font-medium text-black hover:text-[#41b3a2]">
                         Login here
                     </Link>
                 </p>
