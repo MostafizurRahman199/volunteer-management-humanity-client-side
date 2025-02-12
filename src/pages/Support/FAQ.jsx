@@ -9,6 +9,8 @@ const FAQ = () => {
   <div className="collapse-title text-xl font-medium">
     1. How can I reset my password?
   </div>
+
+
   <div className="collapse-content">
     <p>
       To reset your password, go to the login page and click on the "Forgot Password" link. 
@@ -17,6 +19,8 @@ const FAQ = () => {
       check your spam folder or contact our support team for assistance.
     </p>
   </div>
+
+
 </div>
 
 <div className="collapse collapse-arrow ">
@@ -36,9 +40,11 @@ const FAQ = () => {
 
 <div className="collapse collapse-arrow ">
   <input type="radio" name="my-accordion-2" />
+
   <div className="collapse-title text-xl font-medium">
     3. How do I volunteer for a post?
   </div>
+  
   <div className="collapse-content">
     <p>
       To volunteer for a post, browse the available opportunities on the platform. 
